@@ -1,0 +1,962 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/datasheets/description/calculator_bundle#"
+     xml:base="http://example.com/datasheets/description/calculator_bundle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:calculator_bundle="http://example.com/datasheets/description/calculator_bundle#">
+    <owl:Ontology rdf:about="http://example.com/datasheets/description/calculator_bundle">
+        <owl:imports rdf:resource="http://example.com/datasheets/description/calculator"/>
+        <owl:imports rdf:resource="http://example.com/datasheets/vocabulary/seds"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#DescriptionBundle"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddAndNotifyActivity -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#AddAndNotifyActivity">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityType_body"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddOperation -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#AddOperation">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#MathOperationType_outputVariableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddTransition -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#AddTransition">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType_fromState"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType_toState"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgX1 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#ArgX1">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgX2 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#ArgX2">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgumentValue -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#ArgumentValue">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AsyncCalculatorInterface -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#AsyncCalculatorInterface">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Calculator -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Calculator">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorActivitySet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorActivitySet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivitySetType_activity"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorComponent -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorComponent">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorDataSheet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorDataSheet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#DataSheetType_device"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#DataSheetType_package"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorEntryState -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorEntryState">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorIdleState -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorIdleState">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorInterfaceSet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorInterfaceSet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationSetType_interface"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorInterfaceSetType -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorInterfaceSetType">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceSetType_interface"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorStateMachine -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorStateMachine">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorStateMachineSet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CalculatorStateMachineSet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#StateMachineSetType_stateMachine"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandAdd -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CommandAdd">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandInit -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CommandInit">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandSet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#CommandSet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#CommandSetType_command"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ComponentSet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#ComponentSet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#ComponentSetType_component"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Do -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Do">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityInvocationType_activity"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#InitTransition -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#InitTransition">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType_fromState"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType_toState"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#IntegerDataEncoding -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#IntegerDataEncoding">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_encoding"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_sizeInBits"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#IntegerDataType -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#IntegerDataType">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataType_range"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#InterfaceType -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#InterfaceType">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#MinMaxRange -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#MinMaxRange">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_rangeType"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#NamedArgX -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#NamedArgX">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#NamedArgY -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#NamedArgY">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OnCommandPrimitiveAdd -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#OnCommandPrimitiveAdd">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_command"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_interface"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OnCommandPrimitiveInit -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#OnCommandPrimitiveInit">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_command"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_interface"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Operator1 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Operator1">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType_operator"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Operator2 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Operator2">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType_operator"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OperatorSwap -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#OperatorSwap">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType_operator"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Package -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Package">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#PackageType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Result -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Result">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SendPrimitiveCommand -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#SendPrimitiveCommand">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_command"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_interface"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SinkArg1 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#SinkArg1">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_outputVariableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SinkArg2 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#SinkArg2">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_outputVariableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SwapOperation -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#SwapOperation">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#MathOperationType_outputVariableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Value -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Value">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#ValueOperandType_value"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableR -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableR">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef1 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableRef1">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef2 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableRef2">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef3 -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableRef3">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRefR -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableRefR">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRefResult -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableRefResult">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableResult -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableResult">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableTmp -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableTmp">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableX -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableX">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableXRef -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableXRef">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableY -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableY">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableYRef -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#VariableYRef">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#X -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#X">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Y -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#Y">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#variableSet -->
+
+
+    <rdf:Description rdf:about="http://example.com/datasheets/description/calculator#variableSet">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableSetType_variable"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

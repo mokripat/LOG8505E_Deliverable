@@ -1,0 +1,330 @@
+description <http://example.com/datasheets/description/calculator#> as calculator {
+	uses <http://example.com/datasheets/vocabulary/seds#> as seds
+	
+	uses <http://www.w3.org/2001/XMLSchema#> as xsd
+
+	instance CalculatorDataSheet : seds:DataSheetType [
+		seds:DataSheetType_device Calculator
+		seds:DataSheetType_package Package
+	]
+	
+	// Calculator Device
+	instance Calculator : seds:DeviceType [
+		seds:NamedEntityType_name "Calculator"
+	]
+	
+	// Package containing data types, interface and set of calculator's components
+	instance Package : seds:PackageType [
+		seds:PackageType_name "CalculatorPackage"
+		seds:PackageType_dataTypeSet DataTypeSet
+		seds:PackageType_declaredInterfaceSet CalculatorInterfaceSet
+		seds:PackageType_componentSet ComponentSet
+	]
+	
+	instance DataTypeSet : seds:DataTypeSetType[
+		seds:DataTypeSetType_integerDataType IntegerDataType
+	]
+	
+	// Data type for integers
+	instance IntegerDataType : seds:IntegerDataType[
+		seds:NamedEntityType_name "Number"
+		seds:IntegerDataType_range NumberRange
+		seds:IntegerDataType_integerDataEncoding IntegerDataEncoding
+	]
+	
+	instance NumberRange : seds:IntegerDataTypeRangeType[
+		seds:IntegerDataTypeRangeType_minMaxRange MinMaxRange
+	]
+	
+	instance MinMaxRange : seds:MinMaxRangeType[
+		seds:MinMaxRangeType_max "1000000"
+		seds:MinMaxRangeType_min "-1000000"
+		seds:MinMaxRangeType_rangeType "inclusiveMinInclusiveMax"
+	]
+	
+	instance IntegerDataEncoding : seds:IntegerDataEncodingType[
+		seds:IntegerDataEncodingType_sizeInBits "32"^^xsd:unsignedLong
+		seds:DataEncodingType_byteOrder "littleEndian"
+		seds:IntegerDataEncodingType_encoding "twosComplement"
+	]
+	
+	
+	instance CalculatorInterfaceSet : seds:InterfaceDeclarationSetType[
+		seds:InterfaceDeclarationSetType_interface AsyncCalculatorInterface
+	]
+	
+	// Sets of calculator's commands
+	instance CommandSet : seds:CommandSetType[
+		seds:CommandSetType_command CommandAdd
+		seds:CommandSetType_command CommandInit
+	]
+	
+	instance CommandAdd : seds:InterfaceCommandType[
+		seds:NamedEntityType_name "Add"
+		seds:InterfaceCommandType_mode "async"
+		seds:DescriptionType_longDescription "Add two numbers"
+		seds:InterfaceCommandType_argument X
+		seds:InterfaceCommandType_argument Y
+		seds:InterfaceCommandType_argument Result
+	]
+	
+	instance X : seds:CommandArgumentType[
+		seds:NamedEntityType_name "x"
+		seds:FieldType_type "IntegerDataType"
+	]
+	
+	instance Y : seds:CommandArgumentType[
+		seds:NamedEntityType_name "y"
+		seds:FieldType_type "IntegerDataType"
+	]
+	
+	instance Result : seds:CommandArgumentType[
+		seds:NamedEntityType_name "result"
+		seds:FieldType_type "IntegerDataType"
+	]
+	
+	
+	instance CommandInit : seds:InterfaceCommandType[
+		seds:NamedEntityType_name "Init"
+		seds:InterfaceCommandType_mode "async"
+		seds:DescriptionType_longDescription "Initialize the calculator"
+	]
+	
+	
+	instance AsyncCalculatorInterface : seds:InterfaceDeclarationType[
+		seds:NamedEntityType_name "AsyncCalculatorType"
+		seds:DescriptionType_longDescription "Interface for performing async calculations"
+		seds:InterfaceDeclarationType_commandSet CommandSet
+	]
+	
+	instance ComponentSet : seds:ComponentSetType[
+		seds:ComponentSetType_component CalculatorComponent
+		
+	]
+
+	instance CalculatorComponent : seds:ComponentType[
+        seds:NamedEntityType_name "Calculator"
+        seds:DescriptionType_longDescription ""
+        seds:ComponentType_providedInterfaceSet CalculatorInterfaceSetType
+        seds:ComponentType_implementation Implementation
+    ]
+    
+    instance CalculatorInterfaceSetType : seds:InterfaceSetType [
+        seds:InterfaceSetType_interface InterfaceType
+    ]
+    
+    instance InterfaceType : seds:InterfaceType [
+        seds:InterfaceType_type "CalculatorInterfaceSet"
+    ]
+    
+    // Implementation of Calculator's components - Variables, Activities and StateMachine
+    instance Implementation : seds:ComponentImplementationType[
+    	seds:ComponentImplementationType_variableSet variableSet
+    	seds:ComponentImplementationType_activitySet CalculatorActivitySet
+    	seds:ComponentImplementationType_stateMachineSet CalculatorStateMachineSet
+    ]
+    
+    // Set of variables that calculator uses
+ 	instance variableSet : seds:VariableSetType[
+ 		seds:VariableSetType_variable VariableX
+ 		seds:VariableSetType_variable VariableY
+ 		seds:VariableSetType_variable VariableR
+ 		seds:VariableSetType_variable VariableResult
+ 		seds:VariableSetType_variable VariableTmp
+ 	]
+ 	
+ 	instance VariableX : seds:VariableType[
+ 		seds:NamedEntityType_name "x"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	instance VariableY : seds:VariableType[
+ 		seds:NamedEntityType_name "y"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	instance VariableR : seds:VariableType[
+ 		seds:NamedEntityType_name "r"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	instance VariableResult : seds:VariableType[
+ 		seds:NamedEntityType_name "result"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	instance VariableTmp : seds:VariableType[
+ 		seds:NamedEntityType_name "tmp"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	
+ 	// Activites of the Calculator
+ 	instance CalculatorActivitySet : seds:ActivitySetType[
+ 		seds:ActivitySetType_activity AddAndNotifyActivity
+ 	]
+ 	
+ 	instance AddAndNotifyActivity : seds:ActivityType[
+ 		seds:ActivityType_body AddAndNotifyActivityBody
+ 		seds:ActivityType_argument ArgX1
+ 		seds:ActivityType_argument ArgX2
+ 	]
+ 	
+ 	instance ArgX1 : seds:ActivityArgumentType[
+ 		seds:NamedEntityType_name "x1"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	
+ 	instance ArgX2 : seds:ActivityArgumentType[
+ 		seds:NamedEntityType_name "x2"
+ 		seds:FieldType_type "IntegerDataType"
+ 	]
+ 	
+ 	instance AddAndNotifyActivityBody : seds:BodyType[
+ 		seds:BodyType_mathOperation AddOperation
+ 		seds:BodyType_mathOperation SwapOperation
+ 		seds:BodyType_sendCommandPrimitive SendPrimitiveCommand
+ 	]
+ 	
+ 	// Add Operation implementation
+ 	instance AddOperation : seds:MathOperationType[
+ 		seds:MathOperationType_operator Operator1
+ 		seds:MathOperationType_operator Operator2
+ 		seds:MathOperationType_variableRef VariableRef1
+ 		seds:MathOperationType_variableRef VariableRef2
+ 		seds:MathOperationType_value Value
+ 		seds:MathOperationType_outputVariableRef "r"
+ 	]
+ 	
+ 	instance Operator1 : seds:OperatorType[
+ 		seds:OperatorType_operator "add"
+ 	]
+ 	
+ 	instance Operator2 : seds:OperatorType[
+ 		seds:OperatorType_operator "add"
+ 	]
+ 	
+ 	instance VariableRef1 : seds:VariableRefOperandType[
+ 		seds:VariableRefOperandType_variableRef "ArgX1"
+ 	]
+ 	
+ 	instance VariableRef2 : seds:VariableRefOperandType[
+ 		seds:VariableRefOperandType_variableRef "ArgX2"
+ 	]
+ 	
+ 	instance Value : seds:ValueOperandType[
+ 		seds:ValueOperandType_value "2"
+ 	]
+ 	
+ 	// Implementation of Swap operation
+ 	instance SwapOperation : seds:MathOperationType[
+ 		seds:MathOperationType_operator OperatorSwap
+ 		seds:MathOperationType_variableRef VariableRefR
+ 		seds:MathOperationType_variableRef VariableRefResult
+ 		seds:MathOperationType_outputVariableRef "r"
+ 	]
+ 	
+ 	instance OperatorSwap : seds:OperatorType[
+ 		seds:OperatorType_operator "swap"
+ 	]
+ 	
+ 	instance VariableRefR : seds:VariableRefOperandType[
+ 		seds:VariableRefOperandType_variableRef "VariableR"
+ 	]
+ 	
+ 	instance VariableRefResult : seds:VariableRefOperandType[
+ 		seds:VariableRefOperandType_variableRef "VariableResult"
+ 	]
+ 	
+ 	instance SendPrimitiveCommand : seds:SendCommandPrimitiveType[
+ 		seds:SendCommandPrimitiveType_command "Add"
+ 		seds:SendCommandPrimitiveType_interface "AsyncCalculator"
+ 		seds:SendCommandPrimitiveType_argumentValue ArgumentValue
+ 	]
+ 	
+ 	instance ArgumentValue : seds:NamedArgumentValueType[
+ 		seds:NamedArgumentValueType_name "result"
+ 		seds:OperandType_variableRef VariableRef3
+ 	]
+ 	
+ 	instance VariableRef3 : seds:VariableRefOperandType[
+ 		seds:VariableRefOperandType_variableRef "VariableResult"
+ 	]
+ 	
+ 	instance CalculatorStateMachineSet : seds:StateMachineSetType[
+ 		seds:StateMachineSetType_stateMachine CalculatorStateMachine
+ 	]
+ 	
+ 	// Calculator StateMachine Implementation - States and transitions between them
+ 	instance CalculatorStateMachine : seds:StateMachineType[
+ 		seds:NamedEntityType_name "Calculator"
+ 		seds:StateMachineType_entryState CalculatorEntryState
+ 		seds:StateMachineType_state CalculatorIdleState
+ 		seds:StateMachineType_transition AddTransition
+ 		seds:StateMachineType_transition InitTransition
+ 	]
+ 	
+ 	instance CalculatorEntryState : seds:EntryStateType[
+ 		seds:NamedEntityType_name "Off"
+ 	]
+ 	
+ 	instance CalculatorIdleState : seds:StateType[
+ 		seds:NamedEntityType_name "Idle"
+ 	]
+ 	
+ 	instance AddTransition : seds:TransitionType[
+ 		seds:NamedEntityType_name "Add"
+ 		seds:TransitionType_do Do
+ 		seds:TransitionType_fromState "CalculatorIdleState"
+ 		seds:TransitionType_toState "CalculatorIdleState"
+ 		seds:TransitionType_onCommandPrimitive OnCommandPrimitiveAdd
+ 	]
+ 	
+ 	instance OnCommandPrimitiveAdd : seds:OnCommandPrimitiveType[
+ 		seds:OnCommandPrimitiveType_command "CommandAdd"
+ 		seds:OnCommandPrimitiveType_interface "AsyncCalculatorInterface"
+ 		seds:OnCommandPrimitiveType_argumentValue SinkArg1
+ 		seds:OnCommandPrimitiveType_argumentValue SinkArg2
+ 	]
+ 	
+ 	instance SinkArg1 : seds:SinkArgumentValueType[
+ 		seds:SinkArgumentValueType_name "ArgX1"
+ 		seds:SinkArgumentValueType_outputVariableRef "VariableX"
+ 	]
+ 	
+ 	instance SinkArg2 : seds:SinkArgumentValueType[
+ 		seds:SinkArgumentValueType_name "ArgX2"
+ 		seds:SinkArgumentValueType_outputVariableRef "VariableY"
+ 	]
+ 	
+ 	instance Do : seds:ActivityInvocationType[
+ 		seds:ActivityInvocationType_activity "AddAndNotifyActivity"
+ 		seds:ActivityInvocationType_argumentValue NamedArgX
+ 		seds:ActivityInvocationType_argumentValue NamedArgY
+ 	]
+ 	
+ 	instance NamedArgX : seds:NamedArgumentValueType [
+ 		seds:NamedArgumentValueType_name "ArgX1"
+ 		seds:OperandType_variableRef VariableXRef
+ 	]
+ 	
+ 	instance VariableXRef : seds:VariableRefOperandType [
+ 		seds:VariableRefOperandType_variableRef "VariableX"
+ 	]
+ 	
+ 	instance NamedArgY : seds:NamedArgumentValueType [
+ 		seds:NamedArgumentValueType_name "ArgX2"
+ 		seds:OperandType_variableRef VariableYRef
+ 	]
+ 	
+ 	instance VariableYRef : seds:VariableRefOperandType [
+ 		seds:VariableRefOperandType_variableRef "VariableY"
+ 	]
+ 	
+ 	instance InitTransition : seds:TransitionType [
+ 		seds:NamedEntityType_name "Init"
+ 		seds:TransitionType_fromState "CalculatorEntryState"
+ 		seds:TransitionType_toState "CalculatorIdleState"
+ 		seds:TransitionType_onCommandPrimitive OnCommandPrimitiveInit
+ 	]
+ 	
+ 	instance OnCommandPrimitiveInit : seds:OnCommandPrimitiveType[
+ 		seds:OnCommandPrimitiveType_command "CommandInit"
+ 		seds:OnCommandPrimitiveType_interface "AsyncCalculatorInterface"
+ 	]
+}

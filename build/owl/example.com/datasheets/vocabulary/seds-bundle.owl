@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/datasheets/vocabulary/seds-bundle#"
+     xml:base="http://example.com/datasheets/vocabulary/seds-bundle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:seds-bundle="http://example.com/datasheets/vocabulary/seds-bundle#">
+    <owl:Ontology rdf:about="http://example.com/datasheets/vocabulary/seds-bundle">
+        <owl:imports rdf:resource="http://example.com/datasheets/vocabulary/seds"/>
+        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#VocabularyBundle"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ANDedConditionsType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityArgumentType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityInvocationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ActivitySetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ArrayDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ArrayDimensionsType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#AssignmentType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BaseInterfaceSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BinaryDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BodyType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BooleanDataEncodingType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BooleanDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#BooleanExpressionType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#CalibrationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#CommandArgumentType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#CommandSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ComparisonType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentImplementationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ConditionalType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ConstraintSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ContainerDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ContainerRangeConstraintType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ContainerTypeConstraintType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ContainerValueConstraintType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DataSheetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DataTypeSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DateMetadataValueType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DerivedTypeRangeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DeviceType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#DimensionSizeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EntryListType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EntryStateType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EntryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EnumeratedDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EnumeratedDataTypeRangeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#EnumerationListType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ExitStateType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#FloatDataEncodingType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#FloatDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#FloatDataTypeRangeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#FloatMetadataValueType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericAlternateSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericAlternateType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericTypeMapSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericTypeMapType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericTypeSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#GenericTypeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataTypeRangeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerMetadataValueType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceCommandType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceParameterType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceRefType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#IterationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#MathOperationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#MetadataCategoryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#MetadataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#MetadataValueSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ORedConditionsType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#OnParameterPrimitiveType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#OperandType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#OperatorType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#PackageFileType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#PackageType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#PaddingEntryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterActivityMapSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterActivityMapType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterMapDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterMapSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterMapType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ParameterSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#PolynomialTermType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#PolynomialType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SendParameterPrimitiveType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SplineCalibratorType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SplinePointType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StateType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StringDataEncodingType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StringDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#StringMetadataValueType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#SubRangeDataType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#TimerSinkType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#TransitionType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#TypeCheckType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ValueEnumerationType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ValueOperandType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#VariableSetType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ErrorControlEntryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#FixedValueEntryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#LengthEntryType"/>
+            <rdf:Description rdf:about="http://example.com/datasheets/vocabulary/seds#ListEntryType"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

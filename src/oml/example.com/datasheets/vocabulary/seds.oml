@@ -1,0 +1,3658 @@
+vocabulary <http://example.com/datasheets/vocabulary/seds#> as seds {
+
+	extends <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+
+	extends <http://www.w3.org/2001/XMLSchema#> as xsd
+
+	@rdfs:label "ActivityArgumentType"
+	@rdfs:comment "An argument to an activity"
+	concept ActivityArgumentType < FieldType
+
+	@rdfs:label "ActivityInvocationType"
+	@rdfs:comment "Represents the invocation of an activity"
+	concept ActivityInvocationType < StatementType [
+		restricts ActivityInvocationType_activity to exactly 1
+	]
+
+	@rdfs:label "argumentValue"
+	relation ActivityInvocationType_argumentValue [
+		from ActivityInvocationType
+		to NamedArgumentValueType
+	]
+
+	@rdfs:label "activity"
+	scalar property ActivityInvocationType_activity [
+		domain ActivityInvocationType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "ActivitySetType"
+	@rdfs:comment "The set of activities used to implement a component"
+	concept ActivitySetType < [
+		restricts ActivitySetType_activity to min 1
+	]
+
+	@rdfs:label "activity"
+	relation ActivitySetType_activity [
+		from ActivitySetType
+		to ActivityType
+	]
+
+	@rdfs:label "ActivityType"
+	@rdfs:comment "An activity used to implement a component"
+	concept ActivityType < NamedEntityType [
+		restricts ActivityType_body to exactly 1
+	]
+
+	@rdfs:label "argument"
+	relation ActivityType_argument [
+		from ActivityType
+		to ActivityArgumentType
+	]
+
+	@rdfs:label "body"
+	relation ActivityType_body [
+		from ActivityType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "ANDedConditionsType"
+	@rdfs:comment '''A list of boolean
+				comparisons, or boolean groups that are logically ANDed
+				together. Any
+				ORed conditions in the list are evaluated first.'''
+	concept ANDedConditionsType < BaseConditionsType
+
+	@rdfs:label "condition"
+	relation ANDedConditionsType_condition [
+		from ANDedConditionsType
+		to ComparisonType
+	]
+
+	@rdfs:label "oRedConditions"
+	relation ANDedConditionsType_oRedConditions [
+		from ANDedConditionsType
+		to ORedConditionsType
+	]
+
+	@rdfs:label "typeCondition"
+	relation ANDedConditionsType_typeCondition [
+		from ANDedConditionsType
+		to TypeCheckType
+	]
+
+	@rdfs:label "ArrayDataType"
+	@rdfs:comment '''An array of values of the
+				type referenced in 'dataTypeRef' with the
+				number of array dimensions
+				as specified in the dimension list.'''
+	concept ArrayDataType < CompositeDataType [
+		restricts ArrayDataType_dimensionList to exactly 1
+		restricts ArrayDataType_dataTypeRef to exactly 1
+	]
+
+	@rdfs:label "dimensionList"
+	relation ArrayDataType_dimensionList [
+		from ArrayDataType
+		to ArrayDimensionsType
+		functional
+	]
+
+	@rdfs:label "dataTypeRef"
+	@rdfs:comment "The data type that this is an array of."
+	scalar property ArrayDataType_dataTypeRef [
+		domain ArrayDataType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "ArrayDimensionsType"
+	@rdfs:comment '''The dimensions of an array, where the Dimension
+				list is in this form:
+				Array[1stDim][2ndDim][lastDim]. The last
+				dimension is assumed to be the least significant - that is
+				this
+				dimension
+				will cycle through its combination before the next to last
+				dimension
+				changes.'''
+	concept ArrayDimensionsType < [
+		restricts ArrayDimensionsType_dimension to min 1
+	]
+
+	@rdfs:label "dimension"
+	relation ArrayDimensionsType_dimension [
+		from ArrayDimensionsType
+		to DimensionSizeType
+	]
+
+	@rdfs:label "AssignmentType"
+	@rdfs:comment "An assignment to a variable"
+	concept AssignmentType < StatementType [
+		restricts AssignmentType_outputVariableRef to exactly 1
+	]
+
+	@rdfs:label "variableRef"
+	@rdfs:comment '''The variable being referred to is assumed to be
+								of the correct type'''
+	relation AssignmentType_variableRef [
+		from AssignmentType
+		to VariableRefOperandType
+		functional
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment "Value is assumed to be of the correct type"
+	relation AssignmentType_value [
+		from AssignmentType
+		to ValueOperandType
+		functional
+	]
+
+	@rdfs:label "outputVariableRef"
+	scalar property AssignmentType_outputVariableRef [
+		domain AssignmentType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "BaseConditionsType"
+	@rdfs:comment '''An abstract type
+				definition used as the base for the various elements of
+				Boolean
+				comparison operations.'''
+	aspect BaseConditionsType
+
+	@rdfs:label "BaseInterfaceSetType"
+	@rdfs:comment "The set of types from which this interface inherits"
+	concept BaseInterfaceSetType < [
+		restricts BaseInterfaceSetType_interface to min 1
+	]
+
+	@rdfs:label "interface"
+	relation BaseInterfaceSetType_interface [
+		from BaseInterfaceSetType
+		to InterfaceRefType
+	]
+
+	@rdfs:label "BaseMathOperationsType"
+	@rdfs:comment '''An abstract type
+				definition used as the base for the various elements of
+				math
+				operations.'''
+	aspect BaseMathOperationsType
+
+	@rdfs:label "BinaryDataType"
+	@rdfs:comment '''Contains a raw binary
+				value'''
+	concept BinaryDataType < ScalarDataType [
+		restricts BinaryDataType_sizeInBits to exactly 1
+	]
+
+	@rdfs:label "fixedSize"
+	scalar property BinaryDataType_fixedSize [
+		domain BinaryDataType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "sizeInBits"
+	@rdfs:comment '''The size of binary field an instance of this
+							binary data type can hold, in bits. If fixedSize is
+							true, the
+							value must always be this large, if fixedSize is false, this
+							is
+							the maximum size.'''
+	scalar property BinaryDataType_sizeInBits [
+		domain BinaryDataType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "BodyType"
+	@rdfs:comment "The implementation of an activity"
+	concept BodyType
+
+	@rdfs:label "assignment"
+	relation BodyType_assignment [
+		from BodyType
+		to AssignmentType
+	]
+
+	@rdfs:label "conditional"
+	relation BodyType_conditional [
+		from BodyType
+		to ConditionalType
+	]
+
+	@rdfs:label "iteration"
+	relation BodyType_iteration [
+		from BodyType
+		to IterationType
+	]
+
+	@rdfs:label "calibration"
+	relation BodyType_calibration [
+		from BodyType
+		to CalibrationType
+	]
+
+	@rdfs:label "sendParameterPrimitive"
+	relation BodyType_sendParameterPrimitive [
+		from BodyType
+		to SendParameterPrimitiveType
+	]
+
+	@rdfs:label "sendCommandPrimitive"
+	relation BodyType_sendCommandPrimitive [
+		from BodyType
+		to SendCommandPrimitiveType
+	]
+
+	@rdfs:label "mathOperation"
+	relation BodyType_mathOperation [
+		from BodyType
+		to MathOperationType
+	]
+
+	@rdfs:label "call"
+	relation BodyType_call [
+		from BodyType
+		to ActivityInvocationType
+	]
+
+	@rdfs:label "BooleanDataEncodingType"
+	@rdfs:comment '''Check for either zero
+				which is false, and non-zero which is true, or the
+				other way around.
+				Bit and byte order are ignored.'''
+	concept BooleanDataEncodingType < DataEncodingType [
+		restricts BooleanDataEncodingType_sizeInBits to exactly 1
+	]
+
+	@rdfs:label "falseValue"
+	@rdfs:comment '''Define the false value, true is anything
+							non-false.
+							The default is zero, meaning non-zero is true.'''
+	scalar property BooleanDataEncodingType_falseValue [
+		domain BooleanDataEncodingType
+		range FalseValueType
+		functional
+	]
+
+	@rdfs:label "sizeInBits"
+	scalar property BooleanDataEncodingType_sizeInBits [
+		domain BooleanDataEncodingType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "BooleanDataType"
+	@rdfs:comment "Contains a Boolean value"
+	concept BooleanDataType < ScalarDataType
+
+	@rdfs:label "booleanDataEncoding"
+	relation BooleanDataType_booleanDataEncoding [
+		from BooleanDataType
+		to BooleanDataEncodingType
+		functional
+	]
+
+	@rdfs:label "BooleanExpressionType"
+	@rdfs:comment '''Holds an arbitrarily
+				complex boolean expression'''
+	concept BooleanExpressionType
+
+	@rdfs:label "condition"
+	relation BooleanExpressionType_condition [
+		from BooleanExpressionType
+		to ComparisonType
+		functional
+	]
+
+	@rdfs:label "aNDedConditions"
+	relation BooleanExpressionType_aNDedConditions [
+		from BooleanExpressionType
+		to ANDedConditionsType
+		functional
+	]
+
+	@rdfs:label "oRedConditions"
+	relation BooleanExpressionType_oRedConditions [
+		from BooleanExpressionType
+		to ORedConditionsType
+		functional
+	]
+
+	@rdfs:label "typeCondition"
+	relation BooleanExpressionType_typeCondition [
+		from BooleanExpressionType
+		to TypeCheckType
+		functional
+	]
+
+	@rdfs:label "ByteOrderType"
+	@rdfs:comment '''The endianness of a type encoding. Big-endian has
+				the most significant byte first.'''
+	scalar ByteOrderType [
+		oneOf "bigEndian", "littleEndian"
+	]
+
+	@rdfs:label "ByteOrderTypeObject"
+	scalar ByteOrderTypeObject = ByteOrderType
+
+	@rdfs:label "CalibrationType"
+	@rdfs:comment "A calibration operation"
+	concept CalibrationType < StatementType [
+		restricts CalibrationType_inputVariableRef to exactly 1
+		restricts CalibrationType_outputVariableRef to exactly 1
+	]
+
+	@rdfs:label "splineCalibrator"
+	relation CalibrationType_splineCalibrator [
+		from CalibrationType
+		to SplineCalibratorType
+		functional
+	]
+
+	@rdfs:label "polynomialCalibrator"
+	relation CalibrationType_polynomialCalibrator [
+		from CalibrationType
+		to PolynomialType
+		functional
+	]
+
+	@rdfs:label "inputVariableRef"
+	scalar property CalibrationType_inputVariableRef [
+		domain CalibrationType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "outputVariableRef"
+	scalar property CalibrationType_outputVariableRef [
+		domain CalibrationType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "Chirality"
+	@rdfs:comment "This term indicates the handedness of a coordinate system."
+	scalar Chirality [
+		oneOf "leftHanded", "rightHanded"
+	]
+
+	@rdfs:label "ChiralityObject"
+	scalar ChiralityObject = rdfs:Literal
+
+	@rdfs:label "CommandArgumentModeType"
+	@rdfs:comment "The mode of a command argument"
+	scalar CommandArgumentModeType [
+		oneOf "in", "out", "inout", "notify"
+	]
+
+	@rdfs:label "CommandArgumentModeTypeObject"
+	scalar CommandArgumentModeTypeObject = CommandArgumentModeType
+
+	@rdfs:label "CommandArgumentType"
+	@rdfs:comment "An argument to a command"
+	concept CommandArgumentType < ExternalFieldType
+
+	@rdfs:label "dataUnit"
+	scalar property CommandArgumentType_dataUnit [
+		domain CommandArgumentType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "defaultValue"
+	scalar property CommandArgumentType_defaultValue [
+		domain CommandArgumentType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "mode"
+	scalar property CommandArgumentType_mode [
+		domain CommandArgumentType
+		range CommandArgumentModeType
+		functional
+	]
+
+	@rdfs:label "CommandSetType"
+	@rdfs:comment "The set of commands supported by an interface"
+	concept CommandSetType < [
+		restricts CommandSetType_command to min 1
+	]
+
+	@rdfs:label "command"
+	relation CommandSetType_command [
+		from CommandSetType
+		to InterfaceCommandType
+	]
+
+	@rdfs:label "ComparisonOperatorType"
+	@rdfs:comment '''Operators to use when
+				testing a boolean condition'''
+	scalar ComparisonOperatorType [
+		oneOf "equals", "notEquals", "lessThan", "lessThanEquals", "greaterThan", "greaterThanEquals"
+	]
+
+	@rdfs:label "ComparisonOperatorTypeObject"
+	scalar ComparisonOperatorTypeObject = ComparisonOperatorType
+
+	@rdfs:label "ComparisonType"
+	@rdfs:comment '''Compare a variable to a
+				value or another variable'''
+	concept ComparisonType < BaseConditionsType [
+		restricts ComparisonType_firstOperand to exactly 1
+		restricts ComparisonType_comparisonOperator to exactly 1
+	]
+
+	@rdfs:label "firstOperand"
+	relation ComparisonType_firstOperand [
+		from ComparisonType
+		to VariableRefOperandType
+		functional
+	]
+
+	@rdfs:label "comparisonOperator"
+	scalar property ComparisonType_comparisonOperator [
+		domain ComparisonType
+		range ComparisonOperatorType
+		functional
+	]
+
+	@rdfs:label "secondOperand"
+	@rdfs:comment '''The variable being
+									referred to is assumed to have a compatible type
+									with the first
+									operand'''
+	relation ComparisonType_secondOperand [
+		from ComparisonType
+		to VariableRefOperandType
+		functional
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment '''The value is assumed
+									to have a compatible type with the first
+									operand'''
+	relation ComparisonType_value [
+		from ComparisonType
+		to ValueOperandType
+		functional
+	]
+
+	@rdfs:label "ComponentImplementationType"
+	@rdfs:comment "The implementation for a component type"
+	concept ComponentImplementationType
+
+	@rdfs:label "variableSet"
+	relation ComponentImplementationType_variableSet [
+		from ComponentImplementationType
+		to VariableSetType
+		functional
+	]
+
+	@rdfs:label "parameterMapSet"
+	relation ComponentImplementationType_parameterMapSet [
+		from ComponentImplementationType
+		to ParameterMapSetType
+		functional
+	]
+
+	@rdfs:label "parameterActivityMapSet"
+	relation ComponentImplementationType_parameterActivityMapSet [
+		from ComponentImplementationType
+		to ParameterActivityMapSetType
+		functional
+	]
+
+	@rdfs:label "activitySet"
+	relation ComponentImplementationType_activitySet [
+		from ComponentImplementationType
+		to ActivitySetType
+		functional
+	]
+
+	@rdfs:label "stateMachineSet"
+	relation ComponentImplementationType_stateMachineSet [
+		from ComponentImplementationType
+		to StateMachineSetType
+		functional
+	]
+
+	@rdfs:label "ComponentSetType"
+	@rdfs:comment '''The set of component types defined in this
+				namespace'''
+	concept ComponentSetType < [
+		restricts ComponentSetType_component to min 1
+	]
+
+	@rdfs:label "component"
+	relation ComponentSetType_component [
+		from ComponentSetType
+		to ComponentType
+	]
+
+	@rdfs:label "ComponentType"
+	@rdfs:comment "A component type"
+	concept ComponentType < NamedEntityType
+
+	@rdfs:label "providedInterfaceSet"
+	relation ComponentType_providedInterfaceSet [
+		from ComponentType
+		to InterfaceSetType
+		functional
+	]
+
+	@rdfs:label "requiredInterfaceSet"
+	relation ComponentType_requiredInterfaceSet [
+		from ComponentType
+		to InterfaceSetType
+		functional
+	]
+
+	@rdfs:label "dataTypeSet"
+	@rdfs:comment "Data types which are private to the component."
+	relation ComponentType_dataTypeSet [
+		from ComponentType
+		to DataTypeSetType
+		functional
+	]
+
+	@rdfs:label "declaredInterfaceSet"
+	@rdfs:comment '''Interface types which are private to the
+								component type.'''
+	relation ComponentType_declaredInterfaceSet [
+		from ComponentType
+		to InterfaceDeclarationSetType
+		functional
+	]
+
+	@rdfs:label "implementation"
+	relation ComponentType_implementation [
+		from ComponentType
+		to ComponentImplementationType
+		functional
+	]
+
+	@rdfs:label "CompositeDataType"
+	@rdfs:comment '''An abstract type used by
+				within the schema to derive composite data types'''
+	aspect CompositeDataType < RootDataType
+
+	@rdfs:label "ConditionalType"
+	@rdfs:comment "A conditional statement for an activity"
+	concept ConditionalType < StatementType [
+		restricts ConditionalType_condition to exactly 1
+	]
+
+	@rdfs:label "condition"
+	relation ConditionalType_condition [
+		from ConditionalType
+		to BooleanExpressionType
+		functional
+	]
+
+	@rdfs:label "onConditionTrue"
+	relation ConditionalType_onConditionTrue [
+		from ConditionalType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "onConditionFalse"
+	relation ConditionalType_onConditionFalse [
+		from ConditionalType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "ConstraintSetType"
+	@rdfs:comment "The set of constraints on container field values."
+	concept ConstraintSetType
+
+	@rdfs:label "rangeConstraint"
+	relation ConstraintSetType_rangeConstraint [
+		from ConstraintSetType
+		to ContainerRangeConstraintType
+	]
+
+	@rdfs:label "typeConstraint"
+	relation ConstraintSetType_typeConstraint [
+		from ConstraintSetType
+		to ContainerTypeConstraintType
+	]
+
+	@rdfs:label "valueConstraint"
+	relation ConstraintSetType_valueConstraint [
+		from ConstraintSetType
+		to ContainerValueConstraintType
+	]
+
+	@rdfs:label "ContainerConstraintType"
+	@rdfs:comment "A constraint on a container entry"
+	aspect ContainerConstraintType < DescriptionType [
+		restricts ContainerConstraintType_entry to exactly 1
+	]
+
+	@rdfs:label "entry"
+	scalar property ContainerConstraintType_entry [
+		domain ContainerConstraintType
+		range EntryRefType
+		functional
+	]
+
+	@rdfs:label "ContainerDataType"
+	@rdfs:comment '''An ordered list of
+				entries usually with encoding information. Containers
+				may inherit
+				from other containers; when they do, the sequence in the
+				parent
+				Container is 'inherited' and if the
+				location of entries in the child
+				sequence is not specified, it is assumed to
+				start where the parent
+				sequence ended.
+				Parent containers may be marked as "abstract".'''
+	concept ContainerDataType < CompositeDataType
+
+	@rdfs:label "constraintSet"
+	@rdfs:comment '''Used to specify constraints of entries in
+								ancestor (base) container types. These can be used to
+								specify
+								fixed values for entries or to constrain the range of an entry
+								using a derived type.'''
+	relation ContainerDataType_constraintSet [
+		from ContainerDataType
+		to ConstraintSetType
+		functional
+	]
+
+	@rdfs:label "entryList"
+	relation ContainerDataType_entryList [
+		from ContainerDataType
+		to EntryListType
+		functional
+	]
+
+	@rdfs:label "trailerEntryList"
+	relation ContainerDataType_trailerEntryList [
+		from ContainerDataType
+		to EntryListType
+		functional
+	]
+
+	@rdfs:label "abstract"
+	scalar property ContainerDataType_abstract [
+		domain ContainerDataType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "baseType"
+	@rdfs:comment '''Used to derive one
+							Container from another, abstract, container. Will
+							treat the
+							abstract container as 'wrapping' this container, i.e.
+							defining its
+							header and trailer when encoded as a
+							PDU.'''
+	scalar property ContainerDataType_baseType [
+		domain ContainerDataType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "ContainerRangeConstraintType"
+	@rdfs:comment '''A container entry constraint based on a specific
+				derived type'''
+	concept ContainerRangeConstraintType < ContainerConstraintType
+
+	@rdfs:label "minMaxRange"
+	relation ContainerRangeConstraintType_minMaxRange [
+		from ContainerRangeConstraintType
+		to MinMaxRangeType
+		functional
+	]
+
+	@rdfs:label "enumeratedRange"
+	relation ContainerRangeConstraintType_enumeratedRange [
+		from ContainerRangeConstraintType
+		to EnumeratedDataTypeRangeType
+		functional
+	]
+
+	@rdfs:label "ContainerTypeConstraintType"
+	@rdfs:comment '''A container entry constraint based on a specific
+				derived type'''
+	concept ContainerTypeConstraintType < ContainerConstraintType [
+		restricts ContainerTypeConstraintType_type to exactly 1
+	]
+
+	@rdfs:label "type"
+	scalar property ContainerTypeConstraintType_type [
+		domain ContainerTypeConstraintType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "ContainerValueConstraintType"
+	@rdfs:comment '''A container entry constraint based on a specific
+				value'''
+	concept ContainerValueConstraintType < ContainerConstraintType [
+		restricts ContainerValueConstraintType_value to exactly 1
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment "A literal value"
+	scalar property ContainerValueConstraintType_value [
+		domain ContainerValueConstraintType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "CoordinateType"
+	@rdfs:comment '''The coordinate type term indicates how to interpret a semantic type that is an array of coordinates.  The arrays to which the coordinate type applies may be interpreted as locations in a phase space, such as position and velocity vectors.  For arrays that may be interpreted as transformation from one frame to another, such as quaternions and direction cosine matrices, the transformation type applies.
+The coordinate type term specifies a particular combination of the following terms:
+"	coordinate system
+"	array size
+"	unit of measure
+"	reference frame
+Some of the terms listed above may be incompletely determined by a coordinate type value, and so must be specified in an electronic data sheet with that coordinate type value when defining an item of data.  Those terms above that are completely determined by a coordinate type value need not be specified with that value in an electronic data sheet.  The definition of a value of the coordinate type term in the dictionary of terms must provide the information about the terms listed above.
+In an electronic data sheet this term is the coordinateType attribute of a data item.
+Use Cases:
+Interpret a semantic type that is an array of numbers.'''
+	scalar CoordinateType [
+		oneOf "J2000", "LLA", "MOD", "TOD", "UPS", "UTC", "UTM", "latLon", "ICRS"
+	]
+
+	@rdfs:label "CoordinateTypeObject"
+	scalar CoordinateTypeObject = rdfs:Literal
+
+	@rdfs:label "CoreEncodingAndPrecisionType"
+	@rdfs:comment "Standard types of encoding and precision of floating-point data"
+	scalar CoreEncodingAndPrecisionType [
+		oneOf "IEEE754_2008_single", "IEEE754_2008_double", "IEEE754_2008_quad", "MILSTD_1750A_simple", "MILSTD_1750A_extended"
+	]
+
+	@rdfs:label "CoreEncodingAndPrecisionTypeObject"
+	scalar CoreEncodingAndPrecisionTypeObject = CoreEncodingAndPrecisionType
+
+	@rdfs:label "CoreErrorControlType"
+	@rdfs:comment "Standard types of error control algorithm"
+	scalar CoreErrorControlType [
+		oneOf "CRC16_CCITT", "CRC8", "CHECKSUM", "CHECKSUM_LONGITUDINAL"
+	]
+
+	@rdfs:label "CoreErrorControlTypeObject"
+	scalar CoreErrorControlTypeObject = CoreErrorControlType
+
+	@rdfs:label "CoreIntegerEncodingType"
+	@rdfs:comment "Standard types of encoding of integer data"
+	scalar CoreIntegerEncodingType [
+		oneOf "unsigned", "signMagnitude", "twosComplement", "onesComplement", "BCD", "packedBCD"
+	]
+
+	@rdfs:label "CoreIntegerEncodingTypeObject"
+	scalar CoreIntegerEncodingTypeObject = CoreIntegerEncodingType
+
+	@rdfs:label "CoreMathOperatorsType"
+	@rdfs:comment "Standard types of math operators"
+	scalar CoreMathOperatorsType [
+		oneOf "add", "subtract", "multiply", "divide", "modulus", "pow", "ln", "log", "exp", "inverse", "tan", "cos", "sin", "atan", "atan2", "acos", "asin", "tanh", "cosh", "sinh", "atanh", "acosh", "asinh", "swap", "abs", "ceil", "floor", "round", "sqrt", "min", "max"
+	]
+
+	@rdfs:label "CoreMathOperatorsTypeObject"
+	scalar CoreMathOperatorsTypeObject = CoreMathOperatorsType
+
+	@rdfs:label "CoreStringEncodingType"
+	@rdfs:comment "Standard types of encoding of string data"
+	scalar CoreStringEncodingType [
+		oneOf "ASCII", "UTF-8"
+	]
+
+	@rdfs:label "CoreStringEncodingTypeObject"
+	scalar CoreStringEncodingTypeObject = CoreStringEncodingType
+
+	@rdfs:label "DataEncodingType"
+	@rdfs:comment '''Describes how a
+				particular piece of data is sent or received from some
+				non-native,
+				off-platform device. (e.g. a spacecraft)'''
+	aspect DataEncodingType
+
+	@rdfs:label "byteOrder"
+	@rdfs:comment "Big and Little."
+	scalar property DataEncodingType_byteOrder [
+		domain DataEncodingType
+		range ByteOrderType
+		functional
+	]
+
+	@rdfs:label "DataSheetType"
+	@rdfs:comment '''A data sheet defines the components which represent
+				the operation of a single device'''
+	concept DataSheetType < [
+		restricts DataSheetType_device to exactly 1
+		restricts DataSheetType_package to min 1
+	]
+
+	@rdfs:label "device"
+	relation DataSheetType_device [
+		from DataSheetType
+		to DeviceType
+		functional
+	]
+
+	@rdfs:label "package"
+	relation DataSheetType_package [
+		from DataSheetType
+		to PackageType
+	]
+
+	@rdfs:label "DataTypeRefType"
+	@rdfs:comment '''A reference to a data type. This can be in the
+				local namespace, or any other namespace.'''
+	scalar DataTypeRefType = QualifiedNameType
+
+	@rdfs:label "DataTypeSetType"
+	@rdfs:comment "The set of data types defined in this namespace"
+	concept DataTypeSetType
+
+	@rdfs:label "arrayDataType"
+	relation DataTypeSetType_arrayDataType [
+		from DataTypeSetType
+		to ArrayDataType
+	]
+
+	@rdfs:label "binaryDataType"
+	relation DataTypeSetType_binaryDataType [
+		from DataTypeSetType
+		to BinaryDataType
+	]
+
+	@rdfs:label "booleanDataType"
+	relation DataTypeSetType_booleanDataType [
+		from DataTypeSetType
+		to BooleanDataType
+	]
+
+	@rdfs:label "containerDataType"
+	relation DataTypeSetType_containerDataType [
+		from DataTypeSetType
+		to ContainerDataType
+	]
+
+	@rdfs:label "enumeratedDataType"
+	relation DataTypeSetType_enumeratedDataType [
+		from DataTypeSetType
+		to EnumeratedDataType
+	]
+
+	@rdfs:label "floatDataType"
+	relation DataTypeSetType_floatDataType [
+		from DataTypeSetType
+		to FloatDataType
+	]
+
+	@rdfs:label "integerDataType"
+	relation DataTypeSetType_integerDataType [
+		from DataTypeSetType
+		to IntegerDataType
+	]
+
+	@rdfs:label "stringDataType"
+	relation DataTypeSetType_stringDataType [
+		from DataTypeSetType
+		to StringDataType
+	]
+
+	@rdfs:label "subRangeDataType"
+	relation DataTypeSetType_subRangeDataType [
+		from DataTypeSetType
+		to SubRangeDataType
+	]
+
+	@rdfs:label "DateMetadataValueType"
+	@rdfs:comment "A date metadata value"
+	concept DateMetadataValueType < MetadataValueType
+
+	@rdfs:label "value"
+	scalar property DateMetadataValueType_value [
+		domain DateMetadataValueType
+		range xsd:dateTime
+		functional
+	]
+
+	@rdfs:label "DerivedTypeRangeType"
+	@rdfs:comment '''The valid range for a derived type or type
+				instance. This must be a restriction (or identical, but
+				not an
+				extension) of the range of the base type or the type being
+				instantiated.'''
+	concept DerivedTypeRangeType
+
+	@rdfs:label "precisionRange"
+	scalar property DerivedTypeRangeType_precisionRange [
+		domain DerivedTypeRangeType
+		range FloatPrecisionRangeType
+		functional
+	]
+
+	@rdfs:label "minMaxRange"
+	relation DerivedTypeRangeType_minMaxRange [
+		from DerivedTypeRangeType
+		to MinMaxRangeType
+		functional
+	]
+
+	@rdfs:label "enumeratedRange"
+	relation DerivedTypeRangeType_enumeratedRange [
+		from DerivedTypeRangeType
+		to EnumeratedDataTypeRangeType
+		functional
+	]
+
+	@rdfs:label "DescriptionType"
+	@rdfs:comment '''An abstract type
+				definition used as the base for NamedEntityType. It
+				combines the
+				short description and long description.'''
+	aspect DescriptionType
+
+	@rdfs:label "longDescription"
+	@rdfs:comment '''The Long Description
+						is
+						intended to be used for explanatory
+						descriptions of the object
+						and
+						may include HTML markup. Long Descriptions
+						are of unbounded length.'''
+	scalar property DescriptionType_longDescription [
+		domain DescriptionType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "shortDescription"
+	@rdfs:comment '''It is strongly
+					recommended that the short description be kept under 80
+					characters
+					in length'''
+	scalar property DescriptionType_shortDescription [
+		domain DescriptionType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "DeviceType"
+	@rdfs:comment '''The device described by this data sheet. This
+				includes the DACP and DSAP components which implement
+				the device
+				interface.'''
+	concept DeviceType < NamedEntityType
+
+	@rdfs:label "metadata"
+	relation DeviceType_metadata [
+		from DeviceType
+		to MetadataType
+		functional
+	]
+
+	@rdfs:label "DifferenceConvention"
+	@rdfs:comment '''Variables that represent a difference between values of measureable quantities are called relative variables.  This term identifies the convention for computing the difference.
+In an electronic data sheet this term is the differenceConvention attribute of a data item.
+Use Cases:
+Specify that the change in speed reported by a single-axis accelerometer is the difference between the speed at the time of reporting and the speed at the time of the previous report.'''
+	scalar DifferenceConvention [
+		oneOf "comparison", "delta", "gradient", "path", "ratio", "sinceEpoch", "sinceSync"
+	]
+
+	@rdfs:label "DifferenceConventionObject"
+	scalar DifferenceConventionObject = rdfs:Literal
+
+	@rdfs:label "DimensionSizeType"
+	@rdfs:comment '''The size of a single array dimension. Exactly one
+				of size and indexTypeRef must be specified.'''
+	concept DimensionSizeType
+
+	@rdfs:label "indexTypeRef"
+	@rdfs:comment '''Specifies the data type to use as an index for
+					this array. Must be an integer, enumeration or
+					range. The maximum
+					legal value determines the array length.'''
+	scalar property DimensionSizeType_indexTypeRef [
+		domain DimensionSizeType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "size"
+	@rdfs:comment '''Specifies the number of elements in this dimension
+					of the array.'''
+	scalar property DimensionSizeType_size [
+		domain DimensionSizeType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "DoTEncodingAndPrecisionType"
+	@rdfs:comment "Standard types of encoding and precision of floating point numbers."
+	scalar DoTEncodingAndPrecisionType [
+		oneOf "TBDEncodingAndPrecision"
+	]
+
+	@rdfs:label "DoTEncodingAndPrecisionTypeObject"
+	scalar DoTEncodingAndPrecisionTypeObject = DoTEncodingAndPrecisionType
+
+	@rdfs:label "DoTErrorControlType"
+	@rdfs:comment "Standard types of error control algorithms"
+	scalar DoTErrorControlType [
+		oneOf "CRC32"
+	]
+
+	@rdfs:label "DoTErrorControlTypeObject"
+	scalar DoTErrorControlTypeObject = DoTErrorControlType
+
+	@rdfs:label "DoTIntegerEncodingType"
+	@rdfs:comment "Standard types of integer encoding"
+	scalar DoTIntegerEncodingType [
+		oneOf "TBDIntegerEncoding"
+	]
+
+	@rdfs:label "DoTIntegerEncodingTypeObject"
+	scalar DoTIntegerEncodingTypeObject = DoTIntegerEncodingType
+
+	@rdfs:label "DoTMathOperatorsType"
+	@rdfs:comment "Standard math operators"
+	scalar DoTMathOperatorsType [
+		oneOf "TBDMathOperator"
+	]
+
+	@rdfs:label "DoTMathOperatorsTypeObject"
+	scalar DoTMathOperatorsTypeObject = DoTMathOperatorsType
+
+	@rdfs:label "DoTQuantityKind"
+	scalar DoTQuantityKind [
+		oneOf "celsiusTemperatureQK", "energyQK", "lengthQK", "massQK", "powerQK", "thermodynamicTemperatureQK", "timeQK", "velocityQK", "acousticPowerQK", "amountOfMolecularSpeciesQK", "angleQK", "angularRateQK", "areaQK", "astronomicalMagnitudeQK", "capacitanceQK", "dataRateQK", "dynamicViscosityQK", "electricChargeDensityQK", "electricChargeQK", "electricConductancePerDistanceQK", "electricConductanceQK", "electricCurrentDensityQK", "electricCurrentQK", "electricDipoleMomentQK", "electricDisplacementQK", "electricPotentialGradientQK", "electricPotentialQK", "electricResistanceQK", "entropyQK", "forceQK", "frameCountQK", "frequencyQK", "inductanceQK", "informationQK", "luminanceQK", "luminosityQK", "magneticDipoleMomentQK", "magneticFieldStrengthQK", "magneticFluxDensityQK", "magneticFluxQK", "magneticPoleStrengthQK", "percentQK", "permeabilityQK", "pixelQK", "pressureQK", "quantityQK", "solidAngleQK", "specificCapacitanceQK", "surfaceTensionQK", "torqueQK", "volumeQK", "volumetricFlowQK"
+	]
+
+	@rdfs:label "DoTQuantityKindObject"
+	scalar DoTQuantityKindObject = DoTQuantityKind
+
+	@rdfs:label "DoTStringEncodingType"
+	@rdfs:comment "Standard types of encoding for string data."
+	scalar DoTStringEncodingType [
+		oneOf "TBDStringEncoding"
+	]
+
+	@rdfs:label "DoTStringEncodingTypeObject"
+	scalar DoTStringEncodingTypeObject = DoTStringEncodingType
+
+	@rdfs:label "DoTUnit"
+	scalar DoTUnit [
+		oneOf "degreeCelsius", "gram", "inch", "joule", "kelvin", "kilogram", "metre", "metrePerSecond", "second", "watt", "ETRTick", "aToDCount", "ampere", "ampere-hour", "ampere-metre", "ampere-squareMetre", "amperePerMetre", "amperePerSquareMetre", "arcsecond", "arcsecondPerSecond", "astronomicalUnit", "bar", "bit", "bitsPerSecond", "candela", "coulomb", "coulombPerCubicMetre", "coulombPerSquareMetre", "count", "cubicMetre", "cubicMetrePerSecond", "day", "debye", "decibel", "decibelWatt", "degreeAngle", "electron", "electronsPerPixelPerSecond", "farad", "faradPerMetre", "henry", "henryPerMetre", "hertz", "hour", "inverseHenry", "inverseKelvin", "inverseSecond", "joulePerKelvin", "kilogramMetreSquared", "kilogramPerMetre", "liter", "litre", "megabitsPerSecond", "metrePerSecondPerSecond", "millisecond", "minute", "mole", "momentOfForce", "newton", "newtonMetre", "newtonPerMetre", "nit", "ohm", "pascal", "pascalSecond", "percent", "pixel", "radian", "radianPerSecond", "siemens", "siemensPerMetre", "squareMetre", "stellarMagnitude", "steradian", "tesla", "volt", "voltPerMetre", "weber", "weberMetre", "weberPerMetre", "weberPerSquareMetre", "weberPerSteradian", "fractionOfMaximum"
+	]
+
+	@rdfs:label "DoTUnitObject"
+	scalar DoTUnitObject = DoTUnit
+
+	@rdfs:label "EntryListType"
+	@rdfs:comment "The list of entries in this container"
+	concept EntryListType
+
+	@rdfs:label "entry"
+	relation EntryListType_entry [
+		from EntryListType
+		to EntryType
+	]
+
+	@rdfs:label "fixedValueEntry"
+	relation EntryListType_fixedValueEntry [
+		from EntryListType
+		to FixedValueEntryType
+	]
+
+	@rdfs:label "paddingEntry"
+	relation EntryListType_paddingEntry [
+		from EntryListType
+		to PaddingEntryType
+	]
+
+	@rdfs:label "listEntry"
+	relation EntryListType_listEntry [
+		from EntryListType
+		to ListEntryType
+	]
+
+	@rdfs:label "lengthEntry"
+	relation EntryListType_lengthEntry [
+		from EntryListType
+		to LengthEntryType
+	]
+
+	@rdfs:label "errorControlEntry"
+	relation EntryListType_errorControlEntry [
+		from EntryListType
+		to ErrorControlEntryType
+	]
+
+	@rdfs:label "EntryRefType"
+	@rdfs:comment "A reference to a field within a container"
+	scalar EntryRefType = FieldRefType
+
+	@rdfs:label "EntryStateType"
+	@rdfs:comment "A state machine entry pseudo-state"
+	concept EntryStateType < StateMachineElementType
+
+	@rdfs:label "EntryType"
+	@rdfs:comment "An entry in a container"
+	concept EntryType < ExternalFieldType
+
+	@rdfs:label "EnumeratedDataType"
+	@rdfs:comment '''Contains an enumerated
+				value - a value that has both an integral and a
+				string
+				representation.'''
+	concept EnumeratedDataType < ScalarDataType [
+		restricts EnumeratedDataType_enumerationList to exactly 1
+	]
+
+	@rdfs:label "integerDataEncoding"
+	relation EnumeratedDataType_integerDataEncoding [
+		from EnumeratedDataType
+		to IntegerDataEncodingType
+		functional
+	]
+
+	@rdfs:label "enumerationList"
+	@rdfs:comment '''The miminum and maximum values here also
+								constitute this types range.'''
+	relation EnumeratedDataType_enumerationList [
+		from EnumeratedDataType
+		to EnumerationListType
+		functional
+	]
+
+	@rdfs:label "EnumeratedDataTypeRangeType"
+	@rdfs:comment '''The list of in-range items for an enumerated data
+				type'''
+	concept EnumeratedDataTypeRangeType < [
+		restricts EnumeratedDataTypeRangeType_label to min 1
+	]
+
+	@rdfs:label "label"
+	scalar property EnumeratedDataTypeRangeType_label [
+		domain EnumeratedDataTypeRangeType
+		range EnumItemNameType
+	]
+
+	@rdfs:label "EnumerationListType"
+	@rdfs:comment "The list of valid items for an enumerated type"
+	concept EnumerationListType < [
+		restricts EnumerationListType_enumeration to min 1
+	]
+
+	@rdfs:label "enumeration"
+	relation EnumerationListType_enumeration [
+		from EnumerationListType
+		to ValueEnumerationType
+	]
+
+	@rdfs:label "EnumerationNames"
+	@rdfs:comment "The classes derived from this class represent enumerations that may be the range of a data item in an interface described by an electronic data sheet.  The individuals in classes derived from this class are discrete concepts that are values in the range of an enumeration data item in an interface described by an electronic data sheet."
+	scalar EnumerationNames [
+		oneOf "tecOperatingMode", "healthStatus", "starTrackerOperatingMode"
+	]
+
+	@rdfs:label "EnumerationNamesObject"
+	scalar EnumerationNamesObject = rdfs:Literal
+
+	@rdfs:label "EnumItemNameType"
+	@rdfs:comment "The name of an enumeration item"
+	scalar EnumItemNameType = NameType
+
+	@rdfs:label "ErrorControlEntryType"
+	@rdfs:comment '''An error control entry in a container. Has a value
+				derived from the binary contents of the rest of
+				the container
+				according to a specified algortihm (e.g. CRC8).'''
+	concept ErrorControlEntryType < EntryType [
+		restricts ErrorControlEntryType_errorControlType to exactly 1
+	]
+
+	@rdfs:label "errorControlType"
+	@rdfs:comment '''The type of error control code to be used for
+							calculating this entry.'''
+	scalar property ErrorControlEntryType_errorControlType [
+		domain ErrorControlEntryType
+		range ErrorControlType
+		functional
+	]
+
+	@rdfs:label "ErrorControlType"
+	@rdfs:comment "Standard and local types of error control algorithm"
+	scalar ErrorControlType [
+		oneOf "CRC16_CCITT", "CRC8", "CHECKSUM", "CHECKSUM_LONGITUDINAL", "CRC32", "localErrorControl"
+	]
+
+	@rdfs:label "ExitStateType"
+	@rdfs:comment "A state machine exit pseudo-state"
+	concept ExitStateType < StateMachineElementType
+
+	@rdfs:label "ExtEncodingAndPrecisionType"
+	@rdfs:comment "Local types of encoding and precision for floating point numbers"
+	scalar ExtEncodingAndPrecisionType [
+		oneOf "localEncodingAndPrecision"
+	]
+
+	@rdfs:label "ExtEncodingAndPrecisionTypeObject"
+	scalar ExtEncodingAndPrecisionTypeObject = ExtEncodingAndPrecisionType
+
+	@rdfs:label "ExternalFieldType"
+	@rdfs:comment '''An abstract type used within the schema as the
+				parent of all type instances that can be visible outside a component'''
+	aspect ExternalFieldType < FieldType
+
+	@rdfs:label "splineCalibrator"
+	relation ExternalFieldType_splineCalibrator [
+		from ExternalFieldType
+		to SplineCalibratorType
+		functional
+	]
+
+	@rdfs:label "polynomialCalibrator"
+	relation ExternalFieldType_polynomialCalibrator [
+		from ExternalFieldType
+		to PolynomialType
+		functional
+	]
+
+	@rdfs:label "nominalRangeSet"
+	relation ExternalFieldType_nominalRangeSet [
+		from ExternalFieldType
+		to DerivedTypeRangeType
+		functional
+	]
+
+	@rdfs:label "safeRangeSet"
+	relation ExternalFieldType_safeRangeSet [
+		from ExternalFieldType
+		to DerivedTypeRangeType
+		functional
+	]
+
+	@rdfs:label "ExtErrorControlType"
+	@rdfs:comment "Local types of error control algorithm"
+	scalar ExtErrorControlType [
+		oneOf "localErrorControl"
+	]
+
+	@rdfs:label "ExtErrorControlTypeObject"
+	scalar ExtErrorControlTypeObject = ExtErrorControlType
+
+	@rdfs:label "ExtIntegerEncodingType"
+	@rdfs:comment "Local types of encoding for integers"
+	scalar ExtIntegerEncodingType [
+		oneOf "localIntegerEncoding"
+	]
+
+	@rdfs:label "ExtIntegerEncodingTypeObject"
+	scalar ExtIntegerEncodingTypeObject = ExtIntegerEncodingType
+
+	@rdfs:label "ExtMathOperatorsType"
+	@rdfs:comment "Local math operators"
+	scalar ExtMathOperatorsType [
+		oneOf "localMathOperator"
+	]
+
+	@rdfs:label "ExtMathOperatorsTypeObject"
+	scalar ExtMathOperatorsTypeObject = ExtMathOperatorsType
+
+	@rdfs:label "ExtQuantityKind"
+	@rdfs:comment "Local quantity kinds"
+	scalar ExtQuantityKind [
+		oneOf "localQK"
+	]
+
+	@rdfs:label "ExtQuantityKindObject"
+	scalar ExtQuantityKindObject = ExtQuantityKind
+
+	@rdfs:label "ExtStringEncodingType"
+	@rdfs:comment "Local types of encoding for strings"
+	scalar ExtStringEncodingType [
+		oneOf "localStringEncoding"
+	]
+
+	@rdfs:label "ExtStringEncodingTypeObject"
+	scalar ExtStringEncodingTypeObject = ExtStringEncodingType
+
+	@rdfs:label "ExtUnit"
+	@rdfs:comment "Local units"
+	scalar ExtUnit [
+		oneOf "localUnit"
+	]
+
+	@rdfs:label "ExtUnitObject"
+	scalar ExtUnitObject = ExtUnit
+
+	@rdfs:label "FalseValueType"
+	@rdfs:comment 'The encoding for a Boolean data type "false" value'
+	scalar FalseValueType [
+		oneOf "zeroIsFalse", "nonZeroIsFalse"
+	]
+
+	@rdfs:label "FalseValueTypeObject"
+	scalar FalseValueTypeObject = FalseValueType
+
+	@rdfs:label "FieldRefType"
+	@rdfs:comment '''A reference to a field, such as a variable
+				or
+				container entry. This includes referencing
+				into containers (using
+				the
+				C-like syntax `container.field`) and array
+				dimensions (using
+				C-like
+				syntax array[7]).'''
+	scalar FieldRefType = xsd:string
+
+	@rdfs:label "FieldType"
+	@rdfs:comment '''An abstract type used within the schema as the
+				parent of all type instances'''
+	aspect FieldType < NamedEntityType [
+		restricts FieldType_type to exactly 1
+	]
+
+	@rdfs:label "booleanDataEncoding"
+	relation FieldType_booleanDataEncoding [
+		from FieldType
+		to BooleanDataEncodingType
+		functional
+	]
+
+	@rdfs:label "floatDataEncoding"
+	relation FieldType_floatDataEncoding [
+		from FieldType
+		to FloatDataEncodingType
+		functional
+	]
+
+	@rdfs:label "integerDataEncoding"
+	relation FieldType_integerDataEncoding [
+		from FieldType
+		to IntegerDataEncodingType
+		functional
+	]
+
+	@rdfs:label "stringDataEncoding"
+	relation FieldType_stringDataEncoding [
+		from FieldType
+		to StringDataEncodingType
+		functional
+	]
+
+	@rdfs:label "arrayDimensions"
+	relation FieldType_arrayDimensions [
+		from FieldType
+		to ArrayDimensionsType
+		functional
+	]
+
+	@rdfs:label "validRange"
+	relation FieldType_validRange [
+		from FieldType
+		to DerivedTypeRangeType
+		functional
+	]
+
+	@rdfs:label "type"
+	scalar property FieldType_type [
+		domain FieldType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "FixedValueEntryType"
+	@rdfs:comment '''An entry in a container that repeats a number of
+				times indicated by the specified field value'''
+	concept FixedValueEntryType < EntryType
+
+	@rdfs:label "fixedValue"
+	scalar property FixedValueEntryType_fixedValue [
+		domain FixedValueEntryType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "FloatDataEncodingType"
+	@rdfs:comment '''For common encodings of
+				floating point data'''
+	concept FloatDataEncodingType < DataEncodingType [
+		restricts FloatDataEncodingType_encodingAndPrecision to exactly 1
+		restricts FloatDataEncodingType_sizeInBits to exactly 1
+	]
+
+	@rdfs:label "encodingAndPrecision"
+	scalar property FloatDataEncodingType_encodingAndPrecision [
+		domain FloatDataEncodingType
+		range FloatEncodingAndPrecisionType
+		functional
+	]
+
+	@rdfs:label "sizeInBits"
+	scalar property FloatDataEncodingType_sizeInBits [
+		domain FloatDataEncodingType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "FloatDataType"
+	@rdfs:comment '''Contains a floating point
+				value'''
+	concept FloatDataType < NumericDataType [
+		restricts FloatDataType_range to exactly 1
+	]
+
+	@rdfs:label "floatDataEncoding"
+	relation FloatDataType_floatDataEncoding [
+		from FloatDataType
+		to FloatDataEncodingType
+		functional
+	]
+
+	@rdfs:label "range"
+	relation FloatDataType_range [
+		from FloatDataType
+		to FloatDataTypeRangeType
+		functional
+	]
+
+	@rdfs:label "FloatDataTypeRangeType"
+	@rdfs:comment "The range of values supported by a float data type"
+	concept FloatDataTypeRangeType
+
+	@rdfs:label "precisionRange"
+	scalar property FloatDataTypeRangeType_precisionRange [
+		domain FloatDataTypeRangeType
+		range FloatPrecisionRangeType
+		functional
+	]
+
+	@rdfs:label "minMaxRange"
+	relation FloatDataTypeRangeType_minMaxRange [
+		from FloatDataTypeRangeType
+		to MinMaxRangeType
+		functional
+	]
+
+	@rdfs:label "FloatEncodingAndPrecisionType"
+	@rdfs:comment '''The encoding and precision of a floating-point data
+				type'''
+	scalar FloatEncodingAndPrecisionType [
+		oneOf "IEEE754_2008_single", "IEEE754_2008_double", "IEEE754_2008_quad", "MILSTD_1750A_simple", "MILSTD_1750A_extended", "TBDEncodingAndPrecision", "localEncodingAndPrecision"
+	]
+
+	@rdfs:label "FloatMetadataValueType"
+	@rdfs:comment "A floating point metadata value"
+	concept FloatMetadataValueType < MetadataValueType
+
+	@rdfs:label "value"
+	scalar property FloatMetadataValueType_value [
+		domain FloatMetadataValueType
+		range xsd:double
+		functional
+	]
+
+	@rdfs:label "FloatPrecisionRangeType"
+	@rdfs:comment '''The range of a float, specified as a "precision",
+				corresponding to that supported by the corresponding IEEE754
+				standard.'''
+	scalar FloatPrecisionRangeType [
+		oneOf "single", "double", "quad"
+	]
+
+	@rdfs:label "FloatPrecisionRangeTypeObject"
+	scalar FloatPrecisionRangeTypeObject = FloatPrecisionRangeType
+
+	@rdfs:label "GenericAlternateSetType"
+	@rdfs:comment '''A set of alternate, mutually exclusive, groups of
+				type mappings for a generic interface, based on patterns of values.'''
+	concept GenericAlternateSetType < DescriptionType [
+		restricts GenericAlternateSetType_alternate to min 1
+	]
+
+	@rdfs:label "alternate"
+	relation GenericAlternateSetType_alternate [
+		from GenericAlternateSetType
+		to GenericAlternateType
+	]
+
+	@rdfs:label "GenericAlternateType"
+	@rdfs:comment '''A group of generic type mappings to be used in an
+				alternate set'''
+	concept GenericAlternateType < [
+		restricts GenericAlternateType_genericTypeMap to min 1
+	]
+
+	@rdfs:label "genericTypeMap"
+	relation GenericAlternateType_genericTypeMap [
+		from GenericAlternateType
+		to GenericTypeMapType
+	]
+
+	@rdfs:label "GenericTypeMapSetType"
+	@rdfs:comment '''A set of generic type mappings representing a
+				particular pattern of usage of a generic interface'''
+	concept GenericTypeMapSetType
+
+	@rdfs:label "genericTypeMap"
+	relation GenericTypeMapSetType_genericTypeMap [
+		from GenericTypeMapSetType
+		to GenericTypeMapType
+	]
+
+	@rdfs:label "alternateSet"
+	relation GenericTypeMapSetType_alternateSet [
+		from GenericTypeMapSetType
+		to GenericAlternateSetType
+		functional
+	]
+
+	@rdfs:label "GenericTypeMapType"
+	@rdfs:comment '''The mapping from a generic type in an abstract
+				interface to a concrete type in the usage of that interface'''
+	concept GenericTypeMapType < FieldType
+
+	@rdfs:label "fixedValue"
+	scalar property GenericTypeMapType_fixedValue [
+		domain GenericTypeMapType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "GenericTypeSetType"
+	@rdfs:comment "The set of generic types for an interface"
+	concept GenericTypeSetType < [
+		restricts GenericTypeSetType_genericType to min 1
+	]
+
+	@rdfs:label "genericType"
+	relation GenericTypeSetType_genericType [
+		from GenericTypeSetType
+		to GenericTypeType
+	]
+
+	@rdfs:label "GenericTypeType"
+	@rdfs:comment "The type for a generic type on an interface"
+	concept GenericTypeType < NamedEntityType
+
+	@rdfs:label "baseType"
+	scalar property GenericTypeType_baseType [
+		domain GenericTypeType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "HealthStatus"
+	@rdfs:comment "This concepts enumerates the states of health of a device."
+	scalar HealthStatus [
+		oneOf "healthGood", "healthSevereWarning", "healthWarning"
+	]
+
+	@rdfs:label "HealthStatusObject"
+	scalar HealthStatusObject = rdfs:Literal
+
+	@rdfs:label "IntegerDataEncodingType"
+	@rdfs:comment '''For all major encodings
+				of integer data'''
+	concept IntegerDataEncodingType < DataEncodingType [
+		restricts IntegerDataEncodingType_encoding to exactly 1
+		restricts IntegerDataEncodingType_sizeInBits to exactly 1
+	]
+
+	@rdfs:label "encoding"
+	scalar property IntegerDataEncodingType_encoding [
+		domain IntegerDataEncodingType
+		range IntegerEncodingType
+		functional
+	]
+
+	@rdfs:label "sizeInBits"
+	scalar property IntegerDataEncodingType_sizeInBits [
+		domain IntegerDataEncodingType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "IntegerDataType"
+	@rdfs:comment "Contains an integer value"
+	concept IntegerDataType < NumericDataType [
+		restricts IntegerDataType_range to exactly 1
+	]
+
+	@rdfs:label "integerDataEncoding"
+	relation IntegerDataType_integerDataEncoding [
+		from IntegerDataType
+		to IntegerDataEncodingType
+		functional
+	]
+
+	@rdfs:label "range"
+	relation IntegerDataType_range [
+		from IntegerDataType
+		to IntegerDataTypeRangeType
+		functional
+	]
+
+	@rdfs:label "IntegerDataTypeRangeType"
+	@rdfs:comment "The valid range of an integer type"
+	concept IntegerDataTypeRangeType
+
+	@rdfs:label "minMaxRange"
+	relation IntegerDataTypeRangeType_minMaxRange [
+		from IntegerDataTypeRangeType
+		to MinMaxRangeType
+		functional
+	]
+
+	@rdfs:label "IntegerEncodingType"
+	@rdfs:comment "The valid encodings for an integer data type"
+	scalar IntegerEncodingType [
+		oneOf "unsigned", "signMagnitude", "twosComplement", "onesComplement", "BCD", "packedBCD", "TBDIntegerEncoding", "localIntegerEncoding"
+	]
+
+	@rdfs:label "IntegerMetadataValueType"
+	@rdfs:comment "An integer metadata value"
+	concept IntegerMetadataValueType < MetadataValueType
+
+	@rdfs:label "value"
+	scalar property IntegerMetadataValueType_value [
+		domain IntegerMetadataValueType
+		range xsd:long
+		functional
+	]
+
+	@rdfs:label "InterfaceCommandType"
+	@rdfs:comment "The declaration of a command on in interface"
+	concept InterfaceCommandType < NamedEntityType
+
+	@rdfs:label "argument"
+	relation InterfaceCommandType_argument [
+		from InterfaceCommandType
+		to CommandArgumentType
+	]
+
+	@rdfs:label "mode"
+	scalar property InterfaceCommandType_mode [
+		domain InterfaceCommandType
+		range ModeType
+		functional
+	]
+
+	@rdfs:label "InterfaceDeclarationRefType"
+	@rdfs:comment "A qualified reference to an interface declaration"
+	scalar InterfaceDeclarationRefType = QualifiedNameType
+
+	@rdfs:label "InterfaceDeclarationSetType"
+	@rdfs:comment "A set of interface types"
+	concept InterfaceDeclarationSetType < [
+		restricts InterfaceDeclarationSetType_interface to min 1
+	]
+
+	@rdfs:label "interface"
+	relation InterfaceDeclarationSetType_interface [
+		from InterfaceDeclarationSetType
+		to InterfaceDeclarationType
+	]
+
+	@rdfs:label "InterfaceDeclarationType"
+	@rdfs:comment "A declaration of an interface type"
+	concept InterfaceDeclarationType < NamedEntityType
+
+	@rdfs:label "baseInterfaceSet"
+	relation InterfaceDeclarationType_baseInterfaceSet [
+		from InterfaceDeclarationType
+		to BaseInterfaceSetType
+		functional
+	]
+
+	@rdfs:label "genericTypeSet"
+	relation InterfaceDeclarationType_genericTypeSet [
+		from InterfaceDeclarationType
+		to GenericTypeSetType
+		functional
+	]
+
+	@rdfs:label "parameterSet"
+	relation InterfaceDeclarationType_parameterSet [
+		from InterfaceDeclarationType
+		to ParameterSetType
+		functional
+	]
+
+	@rdfs:label "commandSet"
+	relation InterfaceDeclarationType_commandSet [
+		from InterfaceDeclarationType
+		to CommandSetType
+		functional
+	]
+
+	@rdfs:label "abstract"
+	scalar property InterfaceDeclarationType_abstract [
+		domain InterfaceDeclarationType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "level"
+	scalar property InterfaceDeclarationType_level [
+		domain InterfaceDeclarationType
+		range InterfaceLevelType
+		functional
+	]
+
+	@rdfs:label "InterfaceLevelType"
+	@rdfs:comment '''The level within the
+				system architecure at which an interface resides'''
+	scalar InterfaceLevelType [
+		oneOf "application", "functional", "access", "subnetwork"
+	]
+
+	@rdfs:label "InterfaceLevelTypeObject"
+	scalar InterfaceLevelTypeObject = InterfaceLevelType
+
+	@rdfs:label "InterfaceParameterType"
+	@rdfs:comment "The declaration of a parameter on an interface."
+	concept InterfaceParameterType < ExternalFieldType
+
+	@rdfs:label "mode"
+	scalar property InterfaceParameterType_mode [
+		domain InterfaceParameterType
+		range ModeType
+		functional
+	]
+
+	@rdfs:label "readOnly"
+	@rdfs:comment '''If true, set operations may not be performed on
+							the parameter'''
+	scalar property InterfaceParameterType_readOnly [
+		domain InterfaceParameterType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "InterfaceRefType"
+	@rdfs:comment '''A reference to an interface declaration with
+				associated generic type mapping.'''
+	concept InterfaceRefType < [
+		restricts InterfaceRefType_type to exactly 1
+	]
+
+	@rdfs:label "genericTypeMapSet"
+	relation InterfaceRefType_genericTypeMapSet [
+		from InterfaceRefType
+		to GenericTypeMapSetType
+		functional
+	]
+
+	@rdfs:label "type"
+	scalar property InterfaceRefType_type [
+		domain InterfaceRefType
+		range InterfaceDeclarationRefType
+		functional
+	]
+
+	@rdfs:label "InterfaceSetType"
+	@rdfs:comment '''The set of interfaces provided or required by a
+				component'''
+	concept InterfaceSetType < [
+		restricts InterfaceSetType_interface to min 1
+	]
+
+	@rdfs:label "interface"
+	relation InterfaceSetType_interface [
+		from InterfaceSetType
+		to InterfaceType
+	]
+
+	@rdfs:label "InterfaceType"
+	@rdfs:comment "An interface provided or required by a component"
+	concept InterfaceType < NamedEntityType [
+		restricts InterfaceType_type to exactly 1
+	]
+
+	@rdfs:label "genericTypeMapSet"
+	relation InterfaceType_genericTypeMapSet [
+		from InterfaceType
+		to GenericTypeMapSetType
+		functional
+	]
+
+	@rdfs:label "type"
+	scalar property InterfaceType_type [
+		domain InterfaceType
+		range InterfaceDeclarationRefType
+		functional
+	]
+
+	@rdfs:label "Interpretation"
+	@rdfs:comment '''The interpretation term identifies a broad class of data types to which an item of data belongs.
+In an electronic data sheet, this term is the interpretation attribute of a data item.
+Use Cases:
+Determine how to interpret the semantic type string for a data item.
+Distinguish an index from a count.
+Distinguish a transformation from a position.'''
+	scalar Interpretation [
+		oneOf "command", "difference", "mode", "name", "orbit", "position", "scope", "status", "transformation", "validityPeriod"
+	]
+
+	@rdfs:label "InterpretationObject"
+	scalar InterpretationObject = rdfs:Literal
+
+	@rdfs:label "IterationType"
+	@rdfs:comment '''An iteration for an activity, either over the
+				elements of an arrar or numeric iteration'''
+	concept IterationType < StatementType [
+		restricts IterationType_do to exactly 1
+		restricts IterationType_iteratorVariableRef to exactly 1
+	]
+
+	@rdfs:label "overArray"
+	scalar property IterationType_overArray [
+		domain IterationType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "startAt"
+	relation IterationType_startAt [
+		from IterationType
+		to OperandType
+		functional
+	]
+
+	@rdfs:label "step"
+	relation IterationType_step [
+		from IterationType
+		to OperandType
+		functional
+	]
+
+	@rdfs:label "endAt"
+	relation IterationType_endAt [
+		from IterationType
+		to OperandType
+		functional
+	]
+
+	@rdfs:label "do"
+	relation IterationType_do [
+		from IterationType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "iteratorVariableRef"
+	scalar property IterationType_iteratorVariableRef [
+		domain IterationType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "LengthEntryType"
+	@rdfs:comment '''A entry in a container logically derived from
+				length of the container. In case the entry value is not exactly the
+				length of the container in bytes, a calibration may be used to
+				express the relation between
+				the two, i.e. container byte length =
+				calibration(entry raw value).'''
+	concept LengthEntryType < EntryType
+
+	@rdfs:label "ListEntryType"
+	@rdfs:comment '''An entry in a container that repeats a number of
+				times indicated by the specified field value'''
+	concept ListEntryType < EntryType [
+		restricts ListEntryType_listLengthField to exactly 1
+	]
+
+	@rdfs:label "listLengthField"
+	scalar property ListEntryType_listLengthField [
+		domain ListEntryType
+		range EntryRefType
+		functional
+	]
+
+	@rdfs:label "LiteralValueType"
+	@rdfs:comment '''A literal value. The string needs to be converted
+				to a type matching the context in which the
+				literal is being applied.
+				Numerical values are assumed to be base 10 unless
+				proceeded by 0x
+				(hexadecimal), 0o
+				(octal), or 0b (binary).'''
+	scalar LiteralValueType = xsd:string
+
+	@rdfs:label "MathOperationType"
+	@rdfs:comment "A mathematical operation for an activity"
+	concept MathOperationType < StatementType [
+		restricts MathOperationType_outputVariableRef to exactly 1
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment "Use a constant in the calculation"
+	relation MathOperationType_value [
+		from MathOperationType
+		to ValueOperandType
+	]
+
+	@rdfs:label "variableRef"
+	@rdfs:comment "Use the value of a variable in the calculation"
+	relation MathOperationType_variableRef [
+		from MathOperationType
+		to VariableRefOperandType
+	]
+
+	@rdfs:label "operator"
+	@rdfs:comment '''Binary operators: +, -, *, /, %, ^ operate on
+								the top two values in the stack, leaving the
+								result on the top of
+								the stack. Unary operators: 1/x, x!, e^x, ln,
+								log, and
+								trigonometric operators operate on
+								the top member of the stack
+								also leaving the result on the top of
+								the stack. 'ln' is a
+								natural log where 'log'
+								is a base 10 logarithm. Trigonometric
+								operators use degrees.
+								'swap' swaps the top two members of the
+								stack.'''
+	relation MathOperationType_operator [
+		from MathOperationType
+		to OperatorType
+	]
+
+	@rdfs:label "outputVariableRef"
+	scalar property MathOperationType_outputVariableRef [
+		domain MathOperationType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "MathOperatorsType"
+	@rdfs:comment "Mathematical operators"
+	scalar MathOperatorsType [
+		oneOf "add", "subtract", "multiply", "divide", "modulus", "pow", "ln", "log", "exp", "inverse", "tan", "cos", "sin", "atan", "atan2", "acos", "asin", "tanh", "cosh", "sinh", "atanh", "acosh", "asinh", "swap", "abs", "ceil", "floor", "round", "sqrt", "min", "max", "TBDMathOperator", "localMathOperator"
+	]
+
+	@rdfs:label "MetadataCategoryType"
+	@rdfs:comment "A metadata category"
+	concept MetadataCategoryType < NamedEntityType
+
+	@rdfs:label "metadataValueSet"
+	relation MetadataCategoryType_metadataValueSet [
+		from MetadataCategoryType
+		to MetadataValueSetType
+		functional
+	]
+
+	@rdfs:label "category"
+	relation MetadataCategoryType_category [
+		from MetadataCategoryType
+		to MetadataCategoryType
+	]
+
+	@rdfs:label "MetadataType"
+	@rdfs:comment "Metadata to associate with a device."
+	concept MetadataType
+
+	@rdfs:label "metadataValueSet"
+	relation MetadataType_metadataValueSet [
+		from MetadataType
+		to MetadataValueSetType
+		functional
+	]
+
+	@rdfs:label "category"
+	relation MetadataType_category [
+		from MetadataType
+		to MetadataCategoryType
+	]
+
+	@rdfs:label "MetadataValueSetType"
+	@rdfs:comment "A set of metadata values"
+	concept MetadataValueSetType
+
+	@rdfs:label "dateValue"
+	relation MetadataValueSetType_dateValue [
+		from MetadataValueSetType
+		to DateMetadataValueType
+	]
+
+	@rdfs:label "floatValue"
+	relation MetadataValueSetType_floatValue [
+		from MetadataValueSetType
+		to FloatMetadataValueType
+	]
+
+	@rdfs:label "integerValue"
+	relation MetadataValueSetType_integerValue [
+		from MetadataValueSetType
+		to IntegerMetadataValueType
+	]
+
+	@rdfs:label "stringValue"
+	relation MetadataValueSetType_stringValue [
+		from MetadataValueSetType
+		to StringMetadataValueType
+	]
+
+	@rdfs:label "MetadataValueType"
+	@rdfs:comment "An abstract metadata value"
+	aspect MetadataValueType < NamedEntityType
+
+	@rdfs:label "MinMaxRangeType"
+	@rdfs:comment '''The valid range of a numeric value specified as a
+				minimum and/or maximum'''
+	concept MinMaxRangeType < [
+		restricts MinMaxRangeType_rangeType to exactly 1
+	]
+
+	@rdfs:label "max"
+	scalar property MinMaxRangeType_max [
+		domain MinMaxRangeType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "min"
+	scalar property MinMaxRangeType_min [
+		domain MinMaxRangeType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "rangeType"
+	scalar property MinMaxRangeType_rangeType [
+		domain MinMaxRangeType
+		range RangeType
+		functional
+	]
+
+	@rdfs:label "ModeType"
+	@rdfs:comment "The mode of an interface parameter or command"
+	scalar ModeType [
+		oneOf "sync", "async"
+	]
+
+	@rdfs:label "ModeTypeObject"
+	scalar ModeTypeObject = ModeType
+
+	@rdfs:label "NamedArgumentValueType"
+	@rdfs:comment "A named argument value."
+	concept NamedArgumentValueType < OperandType [
+		restricts NamedArgumentValueType_name to exactly 1
+	]
+
+	@rdfs:label "name"
+	scalar property NamedArgumentValueType_name [
+		domain NamedArgumentValueType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "NamedEntityType"
+	@rdfs:comment '''The type definition used
+				by most elements that require a name with
+				optional descriptions.'''
+	aspect NamedEntityType < DescriptionType [
+		restricts NamedEntityType_name to exactly 1
+	]
+
+	@rdfs:label "chirality"
+	scalar property NamedEntityType_chirality [
+		domain NamedEntityType
+		range Chirality
+		functional
+	]
+
+	@rdfs:label "coordinateType"
+	scalar property NamedEntityType_coordinateType [
+		domain NamedEntityType
+		range CoordinateType
+		functional
+	]
+
+	@rdfs:label "differenceConvention"
+	scalar property NamedEntityType_differenceConvention [
+		domain NamedEntityType
+		range DifferenceConvention
+		functional
+	]
+
+	@rdfs:label "enumeration"
+	scalar property NamedEntityType_enumeration [
+		domain NamedEntityType
+		range EnumerationNames
+		functional
+	]
+
+	@rdfs:label "healthStatus"
+	scalar property NamedEntityType_healthStatus [
+		domain NamedEntityType
+		range HealthStatus
+		functional
+	]
+
+	@rdfs:label "interpretation"
+	scalar property NamedEntityType_interpretation [
+		domain NamedEntityType
+		range Interpretation
+		functional
+	]
+
+	@rdfs:label "memberOf"
+	scalar property NamedEntityType_memberOf [
+		domain NamedEntityType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "name"
+	scalar property NamedEntityType_name [
+		domain NamedEntityType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "purpose"
+	scalar property NamedEntityType_purpose [
+		domain NamedEntityType
+		range Purpose
+		functional
+	]
+
+	@rdfs:label "quantityKind"
+	scalar property NamedEntityType_quantityKind [
+		domain NamedEntityType
+		range QuantityKind
+		functional
+	]
+
+	@rdfs:label "referenceFrame"
+	scalar property NamedEntityType_referenceFrame [
+		domain NamedEntityType
+		range ReferenceFrame
+		functional
+	]
+
+	@rdfs:label "relationToTimestamp"
+	scalar property NamedEntityType_relationToTimestamp [
+		domain NamedEntityType
+		range RelationToTimestamp
+		functional
+	]
+
+	@rdfs:label "spaceWireLinkEnablement"
+	scalar property NamedEntityType_spaceWireLinkEnablement [
+		domain NamedEntityType
+		range SpaceWireLinkEnablement
+		functional
+	]
+
+	@rdfs:label "spaceWireRMAPWriteSupport"
+	scalar property NamedEntityType_spaceWireRMAPWriteSupport [
+		domain NamedEntityType
+		range SpaceWireRMAPWriteSupport
+		functional
+	]
+
+	@rdfs:label "spWLogicalAddressRange"
+	scalar property NamedEntityType_spWLogicalAddressRange [
+		domain NamedEntityType
+		range SpWLogicalAddressRange
+		functional
+	]
+
+	@rdfs:label "spWProtocolId"
+	scalar property NamedEntityType_spWProtocolId [
+		domain NamedEntityType
+		range SpWProtocolId
+		functional
+	]
+
+	@rdfs:label "spWReceiveRate"
+	scalar property NamedEntityType_spWReceiveRate [
+		domain NamedEntityType
+		range SpWReceiveRate
+		functional
+	]
+
+	@rdfs:label "spWRMAPAddressRange"
+	scalar property NamedEntityType_spWRMAPAddressRange [
+		domain NamedEntityType
+		range SpWRMAPAddressRange
+		functional
+	]
+
+	@rdfs:label "spWTransmitRate"
+	scalar property NamedEntityType_spWTransmitRate [
+		domain NamedEntityType
+		range SpWTransmitRate
+		functional
+	]
+
+	@rdfs:label "starTrackerOperatingMode"
+	scalar property NamedEntityType_starTrackerOperatingMode [
+		domain NamedEntityType
+		range StarTrackerOperatingMode
+		functional
+	]
+
+	@rdfs:label "statusConvention"
+	scalar property NamedEntityType_statusConvention [
+		domain NamedEntityType
+		range StatusConvention
+		functional
+	]
+
+	@rdfs:label "subject"
+	scalar property NamedEntityType_subject [
+		domain NamedEntityType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "tecOperatingMode"
+	scalar property NamedEntityType_tecOperatingMode [
+		domain NamedEntityType
+		range TecOperatingMode
+		functional
+	]
+
+	@rdfs:label "toCoordinateType"
+	scalar property NamedEntityType_toCoordinateType [
+		domain NamedEntityType
+		range ToCoordinateType
+		functional
+	]
+
+	@rdfs:label "toFrame"
+	scalar property NamedEntityType_toFrame [
+		domain NamedEntityType
+		range ToFrame
+		functional
+	]
+
+	@rdfs:label "transformationType"
+	scalar property NamedEntityType_transformationType [
+		domain NamedEntityType
+		range TransformationType
+		functional
+	]
+
+	@rdfs:label "unit"
+	scalar property NamedEntityType_unit [
+		domain NamedEntityType
+		range Unit
+		functional
+	]
+
+	@rdfs:label "NameType"
+	@rdfs:comment '''Used for all unique
+				names. We need to preclude spaces, '-', '.', '/',
+				':", "[" and "]".
+				Only letters, digits and '_' are allowed'''
+	scalar NameType = xsd:string
+
+	@rdfs:label "NumericDataType"
+	@rdfs:comment '''An abstract type that is
+				a super type of either an Integer or Float Data
+				type.'''
+	aspect NumericDataType < ScalarDataType
+
+	@rdfs:label "OnCommandPrimitiveType"
+	@rdfs:comment '''Represents an interface command service primitive
+				sink, i.e. a place where commands are read from an input channel.'''
+	concept OnCommandPrimitiveType < PrimitiveSinkType [
+		restricts OnCommandPrimitiveType_command to exactly 1
+		restricts OnCommandPrimitiveType_interface to exactly 1
+	]
+
+	@rdfs:label "argumentValue"
+	relation OnCommandPrimitiveType_argumentValue [
+		from OnCommandPrimitiveType
+		to SinkArgumentValueType
+	]
+
+	@rdfs:label "command"
+	scalar property OnCommandPrimitiveType_command [
+		domain OnCommandPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "interface"
+	scalar property OnCommandPrimitiveType_interface [
+		domain OnCommandPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "OnParameterPrimitiveType"
+	@rdfs:comment '''Represents an interface parameter service primitive
+				sink, i.e. a place where commands are read from an input channel.'''
+	concept OnParameterPrimitiveType < PrimitiveSinkType [
+		restricts OnParameterPrimitiveType_interface to exactly 1
+		restricts OnParameterPrimitiveType_operation to exactly 1
+		restricts OnParameterPrimitiveType_parameter to exactly 1
+	]
+
+	@rdfs:label "variableRef"
+	scalar property OnParameterPrimitiveType_variableRef [
+		domain OnParameterPrimitiveType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "interface"
+	scalar property OnParameterPrimitiveType_interface [
+		domain OnParameterPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "operation"
+	scalar property OnParameterPrimitiveType_operation [
+		domain OnParameterPrimitiveType
+		range ParameterOperationType
+		functional
+	]
+
+	@rdfs:label "parameter"
+	scalar property OnParameterPrimitiveType_parameter [
+		domain OnParameterPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "OperandType"
+	@rdfs:comment '''An operand value derived from a variable or a
+				literal'''
+	concept OperandType
+
+	@rdfs:label "variableRef"
+	@rdfs:comment '''The variable being referred to is assumed to be
+						of the correct type'''
+	relation OperandType_variableRef [
+		from OperandType
+		to VariableRefOperandType
+		functional
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment "Value is assumed to be of the correct type"
+	relation OperandType_value [
+		from OperandType
+		to ValueOperandType
+		functional
+	]
+
+	@rdfs:label "OperatorType"
+	@rdfs:comment "A mathematical operator"
+	concept OperatorType < BaseMathOperationsType [
+		restricts OperatorType_operator to exactly 1
+	]
+
+	@rdfs:label "operator"
+	scalar property OperatorType_operator [
+		domain OperatorType
+		range MathOperatorsType
+		functional
+	]
+
+	@rdfs:label "OrderType"
+	scalar OrderType = xsd:int
+
+	@rdfs:label "OrderTypeObject"
+	scalar OrderTypeObject = rdfs:Literal
+
+	@rdfs:label "ORedConditionsType"
+	@rdfs:comment '''A list of boolean
+				comparisons, or boolean groups that are logically ORed
+				together. Any
+				ANDed conditions in the list are evaluated first.'''
+	concept ORedConditionsType < BaseConditionsType
+
+	@rdfs:label "condition"
+	relation ORedConditionsType_condition [
+		from ORedConditionsType
+		to ComparisonType
+	]
+
+	@rdfs:label "aNDedConditions"
+	relation ORedConditionsType_aNDedConditions [
+		from ORedConditionsType
+		to ANDedConditionsType
+	]
+
+	@rdfs:label "typeCondition"
+	relation ORedConditionsType_typeCondition [
+		from ORedConditionsType
+		to TypeCheckType
+	]
+
+	@rdfs:label "PackageFileType"
+	@rdfs:comment '''A data sheet defines the components which represent
+				the operation of a single device'''
+	concept PackageFileType < [
+		restricts PackageFileType_package to exactly 1
+	]
+
+	@rdfs:label "package"
+	relation PackageFileType_package [
+		from PackageFileType
+		to PackageType
+		functional
+	]
+
+	@rdfs:label "metadata"
+	relation PackageFileType_metadata [
+		from PackageFileType
+		to MetadataType
+		functional
+	]
+
+	@rdfs:label "PackageType"
+	@rdfs:comment '''A package qualifies the names of all types and
+				interfaces defined within it'''
+	concept PackageType < DescriptionType [
+		restricts PackageType_name to exactly 1
+	]
+
+	@rdfs:label "dataTypeSet"
+	relation PackageType_dataTypeSet [
+		from PackageType
+		to DataTypeSetType
+		functional
+	]
+
+	@rdfs:label "declaredInterfaceSet"
+	relation PackageType_declaredInterfaceSet [
+		from PackageType
+		to InterfaceDeclarationSetType
+		functional
+	]
+
+	@rdfs:label "componentSet"
+	relation PackageType_componentSet [
+		from PackageType
+		to ComponentSetType
+		functional
+	]
+
+	@rdfs:label "base"
+	@rdfs:comment '''<div xmlns="http://www.w3.org/1999/xhtml">
+         
+      
+    <h3>base (as an attribute name)</h3>
+          
+    <p>
+       denotes an attribute whose value
+       provides a URI to be used as the base for interpreting any
+       relative URIs in the scope of the element on which it
+       appears; its value is inherited.  This name is reserved
+       by virtue of its definition in the XML Base specification.</p>
+         
+     
+    <p>
+            See 
+      <a href="http://www.w3.org/TR/xmlbase/">http://www.w3.org/TR/xmlbase/</a>
+            for information about this attribute.
+     
+    </p>
+        
+  </div>'''
+	scalar property PackageType_base [
+		domain PackageType
+		range xsd:anyURI
+		functional
+	]
+
+	@rdfs:label "name"
+	@rdfs:comment '''Names may be hierearchical, seperated by a
+							slash. This is enforced by a pattern.'''
+	scalar property PackageType_name [
+		domain PackageType
+		range QualifiedNameType
+		functional
+	]
+
+	@rdfs:label "PaddingEntryType"
+	@rdfs:comment '''An entry in a container that contains a fixed
+				number of bits that are 0 when encoded
+				and ignored when decoded.'''
+	concept PaddingEntryType < DescriptionType [
+		restricts PaddingEntryType_sizeInBits to exactly 1
+	]
+
+	@rdfs:label "sizeInBits"
+	scalar property PaddingEntryType_sizeInBits [
+		domain PaddingEntryType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "ParameterActivityMapSetType"
+	@rdfs:comment '''The set of required/provided parameter mappings
+				using activities'''
+	concept ParameterActivityMapSetType < [
+		restricts ParameterActivityMapSetType_parameterActivityMap to min 1
+	]
+
+	@rdfs:label "parameterActivityMap"
+	relation ParameterActivityMapSetType_parameterActivityMap [
+		from ParameterActivityMapSetType
+		to ParameterActivityMapType
+	]
+
+	@rdfs:label "ParameterActivityMapType"
+	@rdfs:comment '''A mapping between a parameter on a required
+				interface and a parameter on a provided interface using
+				an activity'''
+	concept ParameterActivityMapType < [
+		restricts ParameterActivityMapType_provided to exactly 1
+		restricts ParameterActivityMapType_required to exactly 1
+	]
+
+	@rdfs:label "provided"
+	relation ParameterActivityMapType_provided [
+		from ParameterActivityMapType
+		to ParameterMapDataType
+		functional
+	]
+
+	@rdfs:label "required"
+	relation ParameterActivityMapType_required [
+		from ParameterActivityMapType
+		to ParameterMapDataType
+		functional
+	]
+
+	@rdfs:label "getActivity"
+	relation ParameterActivityMapType_getActivity [
+		from ParameterActivityMapType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "setActivity"
+	relation ParameterActivityMapType_setActivity [
+		from ParameterActivityMapType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "setActivityOnly"
+	relation ParameterActivityMapType_setActivityOnly [
+		from ParameterActivityMapType
+		to BodyType
+		functional
+	]
+
+	@rdfs:label "ParameterMapDataType"
+	@rdfs:comment '''A parameter which is mapped to an interface
+				parameter'''
+	concept ParameterMapDataType < [
+		restricts ParameterMapDataType_interface to exactly 1
+		restricts ParameterMapDataType_name to exactly 1
+		restricts ParameterMapDataType_parameter to exactly 1
+	]
+
+	@rdfs:label "interface"
+	scalar property ParameterMapDataType_interface [
+		domain ParameterMapDataType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "name"
+	scalar property ParameterMapDataType_name [
+		domain ParameterMapDataType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "parameter"
+	scalar property ParameterMapDataType_parameter [
+		domain ParameterMapDataType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "ParameterMapSetType"
+	@rdfs:comment '''The set of direct mapings between internal and
+				interface parameters'''
+	concept ParameterMapSetType < [
+		restricts ParameterMapSetType_parameterMap to min 1
+	]
+
+	@rdfs:label "parameterMap"
+	relation ParameterMapSetType_parameterMap [
+		from ParameterMapSetType
+		to ParameterMapType
+	]
+
+	@rdfs:label "ParameterMapType"
+	@rdfs:comment '''A direct mapping between an internal parameter and
+				an interface parameter'''
+	concept ParameterMapType < [
+		restricts ParameterMapType_interface to exactly 1
+		restricts ParameterMapType_parameter to exactly 1
+		restricts ParameterMapType_variableRef to exactly 1
+	]
+
+	@rdfs:label "interface"
+	scalar property ParameterMapType_interface [
+		domain ParameterMapType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "parameter"
+	scalar property ParameterMapType_parameter [
+		domain ParameterMapType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "variableRef"
+	scalar property ParameterMapType_variableRef [
+		domain ParameterMapType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "ParameterOperationType"
+	@rdfs:comment "The operations possible on an interface parameter"
+	scalar ParameterOperationType [
+		oneOf "get", "set"
+	]
+
+	@rdfs:label "ParameterOperationTypeObject"
+	scalar ParameterOperationTypeObject = ParameterOperationType
+
+	@rdfs:label "ParameterSetType"
+	@rdfs:comment "The set of parameters supported by an interface"
+	concept ParameterSetType < [
+		restricts ParameterSetType_parameter to min 1
+	]
+
+	@rdfs:label "parameter"
+	relation ParameterSetType_parameter [
+		from ParameterSetType
+		to InterfaceParameterType
+	]
+
+	@rdfs:label "PolynomialTermType"
+	@rdfs:comment "A single term from a polynomial"
+	concept PolynomialTermType < [
+		restricts PolynomialTermType_coefficient to exactly 1
+		restricts PolynomialTermType_exponent to exactly 1
+	]
+
+	@rdfs:label "coefficient"
+	scalar property PolynomialTermType_coefficient [
+		domain PolynomialTermType
+		range xsd:double
+		functional
+	]
+
+	@rdfs:label "exponent"
+	scalar property PolynomialTermType_exponent [
+		domain PolynomialTermType
+		range xsd:unsignedLong
+		functional
+	]
+
+	@rdfs:label "PolynomialType"
+	@rdfs:comment '''A polynomial expression.
+				For example: 3 + 2x.
+				The first coefficient belongs with the X^0 term,
+				the next
+				coefficient belongs to the X^1 term and so on.'''
+	concept PolynomialType < [
+		restricts PolynomialType_term to min 1
+	]
+
+	@rdfs:label "term"
+	@rdfs:comment '''A term in a polynomial
+						expression.'''
+	relation PolynomialType_term [
+		from PolynomialType
+		to PolynomialTermType
+	]
+
+	@rdfs:label "PositiveLongType"
+	@rdfs:comment '''SEDS-specific replacement for xs:positiveInteger
+				which more cleanly maps to native data types.'''
+	scalar PositiveLongType = xsd:unsignedLong
+
+	@rdfs:label "PrimitiveSinkType"
+	@rdfs:comment '''Represents a service primitive sink (i.e. a place
+				where a primitive will be read from an input channel)'''
+	aspect PrimitiveSinkType
+
+	@rdfs:label "failed"
+	scalar property PrimitiveSinkType_failed [
+		domain PrimitiveSinkType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "transaction"
+	scalar property PrimitiveSinkType_transaction [
+		domain PrimitiveSinkType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "PrimitiveSourceType"
+	@rdfs:comment '''Represents a service primitive source (i.e. a place
+				where a primitive will be sent to an output channel).'''
+	aspect PrimitiveSourceType < StatementType
+
+	@rdfs:label "failed"
+	scalar property PrimitiveSourceType_failed [
+		domain PrimitiveSourceType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "transaction"
+	scalar property PrimitiveSourceType_transaction [
+		domain PrimitiveSourceType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "Purpose"
+	@rdfs:comment '''The purpose of a semantic type determines how to apply an instance of the type.  A person may think that the purpose of a semantic type derives from its context of usage, for example, thinking that a parameter of a command must be a set-point.  However, measured values that are not set-points may also be parameters of a command.  Both set-points and measured values may appear in published data.
+The purpose may be clear for simple commands and telemetry that set a data item in a device; in those cases, the purpose attribute can be left implicit.  In some housekeeping telemetry the distinction is not so clear; both set points and measurements may appear in the same relation; in those cases, the purpose attribute must be explicit on each data item.
+In an electronic data sheet this term is the purpose attribute of a data item.
+Use Cases:
+Distinguish a set-point from a measurement to be controlled.
+Distinguish a central value from a measured value.
+Distinguish an adjustment from a measurement'''
+	scalar Purpose [
+		oneOf "action", "calibration", "measurement", "nominal", "setPoint"
+	]
+
+	@rdfs:label "PurposeObject"
+	scalar PurposeObject = rdfs:Literal
+
+	@rdfs:label "QualifiedNameType"
+	@rdfs:comment '''A name qualified by the
+				namespace that it exists in. Packages are
+				separated by a '/'
+				character. The last element of the qualified name is the
+				name itself,
+				everything earlier is part
+				of the namespace name.'''
+	scalar QualifiedNameType = xsd:string
+
+	@rdfs:label "QuantityKind"
+	scalar QuantityKind [
+		oneOf "celsiusTemperatureQK", "energyQK", "lengthQK", "massQK", "powerQK", "thermodynamicTemperatureQK", "timeQK", "velocityQK", "acousticPowerQK", "amountOfMolecularSpeciesQK", "angleQK", "angularRateQK", "areaQK", "astronomicalMagnitudeQK", "capacitanceQK", "dataRateQK", "dynamicViscosityQK", "electricChargeDensityQK", "electricChargeQK", "electricConductancePerDistanceQK", "electricConductanceQK", "electricCurrentDensityQK", "electricCurrentQK", "electricDipoleMomentQK", "electricDisplacementQK", "electricPotentialGradientQK", "electricPotentialQK", "electricResistanceQK", "entropyQK", "forceQK", "frameCountQK", "frequencyQK", "inductanceQK", "informationQK", "luminanceQK", "luminosityQK", "magneticDipoleMomentQK", "magneticFieldStrengthQK", "magneticFluxDensityQK", "magneticFluxQK", "magneticPoleStrengthQK", "percentQK", "permeabilityQK", "pixelQK", "pressureQK", "quantityQK", "solidAngleQK", "specificCapacitanceQK", "surfaceTensionQK", "torqueQK", "volumeQK", "volumetricFlowQK", "localQK"
+	]
+
+	@rdfs:label "RangeType"
+	@rdfs:comment '''(a..b) = {x | a lt; x lt; b} --
+				exclusiveMinExclusiveMax [a..b] = {x | a lt;= x lt;= b} --
+				inclusiveMinInclusiveMax [a..b) = {x | a lt;= x lt; b} --
+				inclusiveMinExclusiveMax (a..b] = {x | a lt; x lt;= b} --
+				exclusiveMinInclusiveMax (a..+) greaterThan(C) [a..+) atLeast(C)
+				(-..b) lessThan(C) (-..b] atMost(C)'''
+	scalar RangeType [
+		oneOf "exclusiveMinExclusiveMax", "inclusiveMinInclusiveMax", "inclusiveMinExclusiveMax", "exclusiveMinInclusiveMax", "greaterThan", "lessThan", "atLeast", "atMost"
+	]
+
+	@rdfs:label "RangeTypeObject"
+	scalar RangeTypeObject = RangeType
+
+	@rdfs:label "ReferenceFrame"
+	@rdfs:comment '''The reference frame term identifies the frame of reference in which a semantic type is relevant.  The generic names of frames are employed here, such as device and vehicle; these generic names do not imply a specific coordinate system.  For example, ECI is a value of this enumeration, while the more specific J2000, TOD, and MOD are reserved for the coordinate type enumeration.
+In an electronic data sheet this term is the referenceFrame attribute of a data item.
+Use Cases:
+Determine the frame in which a semantic type is represented, in order to determine what transformation is needed, if any, to represent the semantic type in a frame that is appropriate for an application.
+Determine the frame of reference that is input to a transformation of coordinates.'''
+	scalar ReferenceFrame [
+		oneOf "ECEF", "ECI", "LVLH", "device", "externalObject", "mount", "transducer", "vehicle", "ICRF"
+	]
+
+	@rdfs:label "ReferenceFrameObject"
+	scalar ReferenceFrameObject = rdfs:Literal
+
+	@rdfs:label "RelationToTimestamp"
+	@rdfs:comment '''When a time stamp appears in a relation with other data items, it may be important to a designer of a control system to know how the time stamp relates to the age of the other data items in the relation.
+In an electronic data sheet this term is the timeRelation attribute of a time stamp data item.
+Use Cases:
+Enable a design of a control system to estimate the delay between measurement of a data value and the time when the control system obtains the data item.'''
+	scalar RelationToTimestamp [
+		oneOf "acquiring", "generation", "sending"
+	]
+
+	@rdfs:label "RelationToTimestampObject"
+	scalar RelationToTimestampObject = rdfs:Literal
+
+	@rdfs:label "RootDataType"
+	@rdfs:comment '''An abstract type used by
+				within the schema as the parent of all other
+				data types'''
+	aspect RootDataType < NamedEntityType
+
+	@rdfs:label "ScalarDataType"
+	@rdfs:comment '''An abstract type used by
+				within the schema to derive scalar data types'''
+	aspect ScalarDataType < RootDataType
+
+	@rdfs:label "SendCommandPrimitiveType"
+	@rdfs:comment '''Represents an interface command service primitive
+				source'''
+	concept SendCommandPrimitiveType < PrimitiveSourceType [
+		restricts SendCommandPrimitiveType_command to exactly 1
+		restricts SendCommandPrimitiveType_interface to exactly 1
+	]
+
+	@rdfs:label "argumentValue"
+	relation SendCommandPrimitiveType_argumentValue [
+		from SendCommandPrimitiveType
+		to NamedArgumentValueType
+	]
+
+	@rdfs:label "command"
+	scalar property SendCommandPrimitiveType_command [
+		domain SendCommandPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "interface"
+	scalar property SendCommandPrimitiveType_interface [
+		domain SendCommandPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "SendParameterPrimitiveType"
+	@rdfs:comment '''Represents an interface parameter service primitive
+				source'''
+	concept SendParameterPrimitiveType < PrimitiveSourceType [
+		restricts SendParameterPrimitiveType_interface to exactly 1
+		restricts SendParameterPrimitiveType_operation to exactly 1
+		restricts SendParameterPrimitiveType_parameter to exactly 1
+	]
+
+	@rdfs:label "argumentValue"
+	relation SendParameterPrimitiveType_argumentValue [
+		from SendParameterPrimitiveType
+		to OperandType
+		functional
+	]
+
+	@rdfs:label "interface"
+	scalar property SendParameterPrimitiveType_interface [
+		domain SendParameterPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "operation"
+	scalar property SendParameterPrimitiveType_operation [
+		domain SendParameterPrimitiveType
+		range ParameterOperationType
+		functional
+	]
+
+	@rdfs:label "parameter"
+	scalar property SendParameterPrimitiveType_parameter [
+		domain SendParameterPrimitiveType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "SinkArgumentValueType"
+	@rdfs:comment "A named incoming argument value."
+	concept SinkArgumentValueType < [
+		restricts SinkArgumentValueType_name to exactly 1
+		restricts SinkArgumentValueType_outputVariableRef to exactly 1
+	]
+
+	@rdfs:label "name"
+	scalar property SinkArgumentValueType_name [
+		domain SinkArgumentValueType
+		range NameType
+		functional
+	]
+
+	@rdfs:label "outputVariableRef"
+	scalar property SinkArgumentValueType_outputVariableRef [
+		domain SinkArgumentValueType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "SpaceWireLinkEnablement"
+	@rdfs:comment "A SpaceWireLinkEnablement describes the mechanism to enable a SpaceWire link."
+	scalar SpaceWireLinkEnablement [
+		oneOf "SpaceWireAlwaysEnabled", "SpaceWireAutoStart", "SpaceWireOutOfBandEnable"
+	]
+
+	@rdfs:label "SpaceWireLinkEnablementObject"
+	scalar SpaceWireLinkEnablementObject = SpaceWireLinkEnablement
+
+	@rdfs:label "SpaceWireRMAPWriteSupport"
+	scalar SpaceWireRMAPWriteSupport [
+		oneOf "SpaceWireRMAPWriteAcknowledged", "SpaceWireRMAPWriteVerified"
+	]
+
+	@rdfs:label "SpaceWireRMAPWriteSupportObject"
+	scalar SpaceWireRMAPWriteSupportObject = SpaceWireRMAPWriteSupport
+
+	@rdfs:label "SplineCalibratorType"
+	@rdfs:comment '''A spline calibration. This is a calibration type
+				where a segmented line in a raw vs calibrated plane is described
+				using a set of
+				points. Raw values are converted to calibrated values
+				by finding a position
+				on the line corresponding to the raw value. The
+				line may be a
+				curve if the order is two or higher. The order of each
+				point must
+				be given, the highest order is order of the spline.'''
+	concept SplineCalibratorType < [
+		restricts SplineCalibratorType_splinePoint to min 2
+	]
+
+	@rdfs:label "splinePoint"
+	relation SplineCalibratorType_splinePoint [
+		from SplineCalibratorType
+		to SplinePointType
+	]
+
+	@rdfs:label "extrapolate"
+	scalar property SplineCalibratorType_extrapolate [
+		domain SplineCalibratorType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "SplinePointType"
+	@rdfs:comment '''Describe a point on a
+				spline. Besides the raw and calibrated values the
+				specific order may
+				be given, one means linear. See SplineCalibratorType.'''
+	concept SplinePointType < [
+		restricts SplinePointType_calibrated to exactly 1
+		restricts SplinePointType_raw to exactly 1
+	]
+
+	@rdfs:label "calibrated"
+	scalar property SplinePointType_calibrated [
+		domain SplinePointType
+		range xsd:double
+		functional
+	]
+
+	@rdfs:label "order"
+	scalar property SplinePointType_order [
+		domain SplinePointType
+		range OrderType
+		functional
+	]
+
+	@rdfs:label "raw"
+	scalar property SplinePointType_raw [
+		domain SplinePointType
+		range xsd:double
+		functional
+	]
+
+	@rdfs:label "SpWLogicalAddressRange"
+	@rdfs:comment '''A SpWLogicalAddressRange defines a range of logical addresses that can be used to address an endpoint on a SpaceWire link.
+The syntax is low value followed by high value, separated by a colon.
+The values are unsigned integers that can fit in an octet.'''
+	scalar SpWLogicalAddressRange = xsd:string
+
+	@rdfs:label "SpWProtocolId"
+	@rdfs:comment '''A SpWProtocolId constrains the content and sequencing of data sent and received through a SpaceWire link.
+One protocol id should be specified per interface, and the the interface describes the content of data sent and received on a SpaceWire link.  The state machine of the component that interacts across the interface describes the sequencing of data sent and received.
+The format of a protocol id is an unisgned integer that fits in an octet, or one of the standard protocol names in {RMAP, CPTP}.'''
+	scalar SpWProtocolId = xsd:string
+
+	@rdfs:label "SpWReceiveRate"
+	@rdfs:comment '''A SpWReceiveRate defines a range of transfer rates at which an endpoint can receive data through a link.
+The syntax is low value followed by high value, separated by a colon.
+The values are integers, in units of Mbit/sec.'''
+	scalar SpWReceiveRate = xsd:string
+
+	@rdfs:label "SpWRMAPAddressRange"
+	@rdfs:comment '''A SpWRMAPAddressRange identifies a range of memory addresses in an endpoint that are accessible through the RMAP protocol.
+The format of this specification is a list of memory ranges separated by commas.  Each memory range consists of a low value followed by a high value followed by a memory identifier followed by a spacewire RMAP write support code, with colons between.  The values and the memory identifier are unsigned integers.  The SpaceWire RMAP write support code is a string in {"ack", "ver"}.'''
+	scalar SpWRMAPAddressRange = xsd:string
+
+	@rdfs:label "SpWTransmitRate"
+	@rdfs:comment '''A SpWTransmitRate defines a range of transfer rates at which an endpoint can send data through a link.
+The syntax is low value followed by high value, separated by a colon.
+The values are integers, in units of Mbit/sec.'''
+	scalar SpWTransmitRate = xsd:string
+
+	@rdfs:label "StarTrackerOperatingMode"
+	@rdfs:comment "The starTrackerOperatingMode enumerates the modes of operation of a star tracker."
+	scalar StarTrackerOperatingMode [
+		oneOf "notOperational", "starTrackerAcquiring", "starTrackerReportingRates", "starTrackerTracking"
+	]
+
+	@rdfs:label "StarTrackerOperatingModeObject"
+	scalar StarTrackerOperatingModeObject = rdfs:Literal
+
+	@rdfs:label "StateMachineElementType"
+	@rdfs:comment '''An element of a state machine. This is the parent
+				for all state machine elements.'''
+	aspect StateMachineElementType < NamedEntityType
+
+	@rdfs:label "StateMachineSetType"
+	@rdfs:comment '''The set of state machines used to implement a
+				component'''
+	concept StateMachineSetType < [
+		restricts StateMachineSetType_stateMachine to min 1
+	]
+
+	@rdfs:label "stateMachine"
+	relation StateMachineSetType_stateMachine [
+		from StateMachineSetType
+		to StateMachineType
+	]
+
+	@rdfs:label "StateMachineType"
+	@rdfs:comment "A state machine used to implement a component"
+	concept StateMachineType < NamedEntityType
+
+	@rdfs:label "entryState"
+	relation StateMachineType_entryState [
+		from StateMachineType
+		to EntryStateType
+	]
+
+	@rdfs:label "exitState"
+	relation StateMachineType_exitState [
+		from StateMachineType
+		to ExitStateType
+	]
+
+	@rdfs:label "state"
+	relation StateMachineType_state [
+		from StateMachineType
+		to StateType
+	]
+
+	@rdfs:label "transition"
+	relation StateMachineType_transition [
+		from StateMachineType
+		to TransitionType
+	]
+
+	@rdfs:label "defaultEntryState"
+	scalar property StateMachineType_defaultEntryState [
+		domain StateMachineType
+		range StateRefType
+		functional
+	]
+
+	@rdfs:label "StatementType"
+	@rdfs:comment "A single step within an activity body."
+	aspect StatementType < DescriptionType
+
+	@rdfs:label "StateRefType"
+	@rdfs:comment "A reference to a state machine state."
+	scalar StateRefType = NameType
+
+	@rdfs:label "StateType"
+	@rdfs:comment "A state machine state"
+	concept StateType < StateMachineElementType
+
+	@rdfs:label "onEntry"
+	relation StateType_onEntry [
+		from StateType
+		to ActivityInvocationType
+		functional
+	]
+
+	@rdfs:label "onExit"
+	relation StateType_onExit [
+		from StateType
+		to ActivityInvocationType
+		functional
+	]
+
+	@rdfs:label "StatusConvention"
+	@rdfs:comment '''The status convention describes how a data item represents the quality of function of a device.
+In an electronic data sheet, this term is the statusConvention attribute of a data item.
+Use Cases:
+Determine whether the data reported by a sensor can be trusted.'''
+	scalar StatusConvention [
+		oneOf "binaryStatus", "qualityFraction", "ternaryStatus"
+	]
+
+	@rdfs:label "StatusConventionObject"
+	scalar StatusConventionObject = rdfs:Literal
+
+	@rdfs:label "StringDataEncodingType"
+	@rdfs:comment '''For common encodings of
+				string data'''
+	concept StringDataEncodingType < DataEncodingType
+
+	@rdfs:label "encoding"
+	scalar property StringDataEncodingType_encoding [
+		domain StringDataEncodingType
+		range StringEncodingType
+		functional
+	]
+
+	@rdfs:label "terminationByte"
+	@rdfs:comment '''The byte value used to determine the end of a
+							string (e.g. 0 for a C string). Mandatory for
+							variable-length
+							strings, but syntactically optional to allow fixed-length
+							strings
+							without a terminator.
+							Pascal-style encoded strings with a
+							preceding length should be modelled as
+							arrays of byte values.'''
+	scalar property StringDataEncodingType_terminationByte [
+		domain StringDataEncodingType
+		range xsd:unsignedByte
+		functional
+	]
+
+	@rdfs:label "StringDataType"
+	@rdfs:comment "Contains a String Value"
+	concept StringDataType < ScalarDataType [
+		restricts StringDataType_length to exactly 1
+	]
+
+	@rdfs:label "stringDataEncoding"
+	relation StringDataType_stringDataEncoding [
+		from StringDataType
+		to StringDataEncodingType
+		functional
+	]
+
+	@rdfs:label "fixedLength"
+	scalar property StringDataType_fixedLength [
+		domain StringDataType
+		range xsd:boolean
+		functional
+	]
+
+	@rdfs:label "length"
+	@rdfs:comment '''The length of string an instance of this string
+							data type can hold in bytes. If fixedLength
+							is true, the
+							string
+							must always be this long, if fixedLength is
+							false, this is
+							the
+							maximum length.'''
+	scalar property StringDataType_length [
+		domain StringDataType
+		range PositiveLongType
+		functional
+	]
+
+	@rdfs:label "StringEncodingType"
+	@rdfs:comment "Supported string encoding types"
+	scalar StringEncodingType [
+		oneOf "ASCII", "UTF-8", "TBDStringEncoding", "localStringEncoding"
+	]
+
+	@rdfs:label "StringMetadataValueType"
+	@rdfs:comment "A string metadata value"
+	concept StringMetadataValueType < MetadataValueType
+
+	@rdfs:label "value"
+	scalar property StringMetadataValueType_value [
+		domain StringMetadataValueType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "SubRangeDataType"
+	@rdfs:comment '''Contains a type defined
+				as a sub-range of another. Range must be
+				contained within that of
+				base type.'''
+	concept SubRangeDataType < NumericDataType [
+		restricts SubRangeDataType_range to exactly 1
+		restricts SubRangeDataType_baseType to exactly 1
+	]
+
+	@rdfs:label "range"
+	relation SubRangeDataType_range [
+		from SubRangeDataType
+		to DerivedTypeRangeType
+		functional
+	]
+
+	@rdfs:label "baseType"
+	@rdfs:comment '''Used to specific the
+							numeric type of which this is a sub-range.'''
+	scalar property SubRangeDataType_baseType [
+		domain SubRangeDataType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "TecOperatingMode"
+	scalar TecOperatingMode [
+		oneOf "controlling", "inBand", "notOperational"
+	]
+
+	@rdfs:label "TecOperatingModeObject"
+	scalar TecOperatingModeObject = rdfs:Literal
+
+	@rdfs:label "TimerSinkType"
+	@rdfs:comment '''The trigger for a transition from a state a
+				specified duration after entering it.'''
+	concept TimerSinkType
+
+	@rdfs:label "nanosecondsAfterEntry"
+	scalar property TimerSinkType_nanosecondsAfterEntry [
+		domain TimerSinkType
+		range xsd:unsignedLong
+		functional
+	]
+
+	@rdfs:label "ToCoordinateType"
+	@rdfs:comment "The toCoordinateType identifies the coordinate type that results from a transformation from the coordinate system identified by the coordinateType."
+	scalar ToCoordinateType [
+		oneOf "J2000", "LLA", "MOD", "TOD", "UPS", "UTC", "UTM", "latLon", "ICRS"
+	]
+
+	@rdfs:label "ToCoordinateTypeObject"
+	scalar ToCoordinateTypeObject = rdfs:Literal
+
+	@rdfs:label "ToFrame"
+	@rdfs:comment "The toFrame idenitifies the frame of reference that results from a transformation from the frame identified by the referenceFrame."
+	scalar ToFrame [
+		oneOf "ECEF", "ECI", "LVLH", "device", "externalObject", "mount", "transducer", "vehicle", "ICRF"
+	]
+
+	@rdfs:label "ToFrameObject"
+	scalar ToFrameObject = rdfs:Literal
+
+	@rdfs:label "TransformationType"
+	@rdfs:comment '''The transformation type term indicates how to interpret a semantic type that is an array of numbers.  The arrays to which the transformation type applies may be interpreted as transformation from one frame to another, such as quaternions and direction cosine matrices.  For arrays that may be interpreted as locations in a phase space, such as position and velocity vectors, the coordinate type applies.  A coordinate type that is a vector may be treated as a transformation by adding it to other vectors, for example; such a transformation would be a called a translation.
+The transformation type term specifies a particular combination of the following terms:
+"	coordinate system
+"	array size
+"	unit of measure
+"	computation
+The definition of a value of the transformation type term must provide the information about the terms listed above.  The reference frame and to frame must be specified with the transformation type in an electronic data sheet when defining an item of data. 
+In an electronic data sheet this term is the transformationType attribute of a data item.
+Use Cases:
+Interpret the quaternion that is emitted by a star tracker.'''
+	scalar TransformationType [
+		oneOf "DCM", "quaternion", "rollPitchYaw", "rotationRate", "translation", "velocity"
+	]
+
+	@rdfs:label "TransformationTypeObject"
+	scalar TransformationTypeObject = rdfs:Literal
+
+	@rdfs:label "TransitionType"
+	@rdfs:comment "A state machine transition"
+	concept TransitionType < StateMachineElementType [
+		restricts TransitionType_fromState to exactly 1
+		restricts TransitionType_toState to exactly 1
+	]
+
+	@rdfs:label "onCommandPrimitive"
+	relation TransitionType_onCommandPrimitive [
+		from TransitionType
+		to OnCommandPrimitiveType
+		functional
+	]
+
+	@rdfs:label "onParameterPrimitive"
+	relation TransitionType_onParameterPrimitive [
+		from TransitionType
+		to OnParameterPrimitiveType
+		functional
+	]
+
+	@rdfs:label "onTimer"
+	relation TransitionType_onTimer [
+		from TransitionType
+		to TimerSinkType
+		functional
+	]
+
+	@rdfs:label "guard"
+	relation TransitionType_guard [
+		from TransitionType
+		to BooleanExpressionType
+		functional
+	]
+
+	@rdfs:label "do"
+	relation TransitionType_do [
+		from TransitionType
+		to ActivityInvocationType
+		functional
+	]
+
+	@rdfs:label "fromState"
+	scalar property TransitionType_fromState [
+		domain TransitionType
+		range StateRefType
+		functional
+	]
+
+	@rdfs:label "toState"
+	scalar property TransitionType_toState [
+		domain TransitionType
+		range StateRefType
+		functional
+	]
+
+	@rdfs:label "TypeCheckType"
+	@rdfs:comment '''Check a variable for
+				compatibility with a type'''
+	concept TypeCheckType < BaseConditionsType [
+		restricts TypeCheckType_firstOperand to exactly 1
+		restricts TypeCheckType_typeOperand to exactly 1
+	]
+
+	@rdfs:label "firstOperand"
+	relation TypeCheckType_firstOperand [
+		from TypeCheckType
+		to VariableRefOperandType
+		functional
+	]
+
+	@rdfs:label "typeOperand"
+	scalar property TypeCheckType_typeOperand [
+		domain TypeCheckType
+		range DataTypeRefType
+		functional
+	]
+
+	@rdfs:label "Unit"
+	scalar Unit [
+		oneOf "degreeCelsius", "gram", "inch", "joule", "kelvin", "kilogram", "metre", "metrePerSecond", "second", "watt", "ETRTick", "aToDCount", "ampere", "ampere-hour", "ampere-metre", "ampere-squareMetre", "amperePerMetre", "amperePerSquareMetre", "arcsecond", "arcsecondPerSecond", "astronomicalUnit", "bar", "bit", "bitsPerSecond", "candela", "coulomb", "coulombPerCubicMetre", "coulombPerSquareMetre", "count", "cubicMetre", "cubicMetrePerSecond", "day", "debye", "decibel", "decibelWatt", "degreeAngle", "electron", "electronsPerPixelPerSecond", "farad", "faradPerMetre", "henry", "henryPerMetre", "hertz", "hour", "inverseHenry", "inverseKelvin", "inverseSecond", "joulePerKelvin", "kilogramMetreSquared", "kilogramPerMetre", "liter", "litre", "megabitsPerSecond", "metrePerSecondPerSecond", "millisecond", "minute", "mole", "momentOfForce", "newton", "newtonMetre", "newtonPerMetre", "nit", "ohm", "pascal", "pascalSecond", "percent", "pixel", "radian", "radianPerSecond", "siemens", "siemensPerMetre", "squareMetre", "stellarMagnitude", "steradian", "tesla", "volt", "voltPerMetre", "weber", "weberMetre", "weberPerMetre", "weberPerSquareMetre", "weberPerSteradian", "fractionOfMaximum", "localUnit"
+	]
+
+	@rdfs:label "ValueEnumerationType"
+	@rdfs:comment '''Contains a value and an
+				associated string label'''
+	concept ValueEnumerationType < DescriptionType [
+		restricts ValueEnumerationType_label to exactly 1
+		restricts ValueEnumerationType_value to exactly 1
+	]
+
+	@rdfs:label "chirality"
+	scalar property ValueEnumerationType_chirality [
+		domain ValueEnumerationType
+		range Chirality
+		functional
+	]
+
+	@rdfs:label "coordinateType"
+	scalar property ValueEnumerationType_coordinateType [
+		domain ValueEnumerationType
+		range CoordinateType
+		functional
+	]
+
+	@rdfs:label "differenceConvention"
+	scalar property ValueEnumerationType_differenceConvention [
+		domain ValueEnumerationType
+		range DifferenceConvention
+		functional
+	]
+
+	@rdfs:label "enumeration"
+	scalar property ValueEnumerationType_enumeration [
+		domain ValueEnumerationType
+		range EnumerationNames
+		functional
+	]
+
+	@rdfs:label "healthStatus"
+	scalar property ValueEnumerationType_healthStatus [
+		domain ValueEnumerationType
+		range HealthStatus
+		functional
+	]
+
+	@rdfs:label "interpretation"
+	scalar property ValueEnumerationType_interpretation [
+		domain ValueEnumerationType
+		range Interpretation
+		functional
+	]
+
+	@rdfs:label "label"
+	scalar property ValueEnumerationType_label [
+		domain ValueEnumerationType
+		range EnumItemNameType
+		functional
+	]
+
+	@rdfs:label "memberOf"
+	scalar property ValueEnumerationType_memberOf [
+		domain ValueEnumerationType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "purpose"
+	scalar property ValueEnumerationType_purpose [
+		domain ValueEnumerationType
+		range Purpose
+		functional
+	]
+
+	@rdfs:label "referenceFrame"
+	scalar property ValueEnumerationType_referenceFrame [
+		domain ValueEnumerationType
+		range ReferenceFrame
+		functional
+	]
+
+	@rdfs:label "relationToTimestamp"
+	scalar property ValueEnumerationType_relationToTimestamp [
+		domain ValueEnumerationType
+		range RelationToTimestamp
+		functional
+	]
+
+	@rdfs:label "spaceWireLinkEnablement"
+	scalar property ValueEnumerationType_spaceWireLinkEnablement [
+		domain ValueEnumerationType
+		range SpaceWireLinkEnablement
+		functional
+	]
+
+	@rdfs:label "spaceWireRMAPWriteSupport"
+	scalar property ValueEnumerationType_spaceWireRMAPWriteSupport [
+		domain ValueEnumerationType
+		range SpaceWireRMAPWriteSupport
+		functional
+	]
+
+	@rdfs:label "spWLogicalAddressRange"
+	scalar property ValueEnumerationType_spWLogicalAddressRange [
+		domain ValueEnumerationType
+		range SpWLogicalAddressRange
+		functional
+	]
+
+	@rdfs:label "spWProtocolId"
+	scalar property ValueEnumerationType_spWProtocolId [
+		domain ValueEnumerationType
+		range SpWProtocolId
+		functional
+	]
+
+	@rdfs:label "spWReceiveRate"
+	scalar property ValueEnumerationType_spWReceiveRate [
+		domain ValueEnumerationType
+		range SpWReceiveRate
+		functional
+	]
+
+	@rdfs:label "spWRMAPAddressRange"
+	scalar property ValueEnumerationType_spWRMAPAddressRange [
+		domain ValueEnumerationType
+		range SpWRMAPAddressRange
+		functional
+	]
+
+	@rdfs:label "spWTransmitRate"
+	scalar property ValueEnumerationType_spWTransmitRate [
+		domain ValueEnumerationType
+		range SpWTransmitRate
+		functional
+	]
+
+	@rdfs:label "starTrackerOperatingMode"
+	scalar property ValueEnumerationType_starTrackerOperatingMode [
+		domain ValueEnumerationType
+		range StarTrackerOperatingMode
+		functional
+	]
+
+	@rdfs:label "statusConvention"
+	scalar property ValueEnumerationType_statusConvention [
+		domain ValueEnumerationType
+		range StatusConvention
+		functional
+	]
+
+	@rdfs:label "subject"
+	scalar property ValueEnumerationType_subject [
+		domain ValueEnumerationType
+		range xsd:string
+		functional
+	]
+
+	@rdfs:label "tecOperatingMode"
+	scalar property ValueEnumerationType_tecOperatingMode [
+		domain ValueEnumerationType
+		range TecOperatingMode
+		functional
+	]
+
+	@rdfs:label "toCoordinateType"
+	scalar property ValueEnumerationType_toCoordinateType [
+		domain ValueEnumerationType
+		range ToCoordinateType
+		functional
+	]
+
+	@rdfs:label "toFrame"
+	scalar property ValueEnumerationType_toFrame [
+		domain ValueEnumerationType
+		range ToFrame
+		functional
+	]
+
+	@rdfs:label "transformationType"
+	scalar property ValueEnumerationType_transformationType [
+		domain ValueEnumerationType
+		range TransformationType
+		functional
+	]
+
+	@rdfs:label "value"
+	scalar property ValueEnumerationType_value [
+		domain ValueEnumerationType
+		range xsd:integer
+		functional
+	]
+
+	@rdfs:label "ValueOperandType"
+	@rdfs:comment "A value as an operand to an operation"
+	concept ValueOperandType < BaseMathOperationsType [
+		restricts ValueOperandType_value to exactly 1
+	]
+
+	@rdfs:label "value"
+	@rdfs:comment "A literal value"
+	scalar property ValueOperandType_value [
+		domain ValueOperandType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "VariableRefOperandType"
+	@rdfs:comment '''A reference to a variable as an operand to an
+				operation'''
+	concept VariableRefOperandType < BaseMathOperationsType [
+		restricts VariableRefOperandType_variableRef to exactly 1
+	]
+
+	@rdfs:label "variableRef"
+	@rdfs:comment "Refer to a variable and take its value."
+	scalar property VariableRefOperandType_variableRef [
+		domain VariableRefOperandType
+		range VariableRefType
+		functional
+	]
+
+	@rdfs:label "VariableRefType"
+	@rdfs:comment "A reference to a component implementation variable"
+	scalar VariableRefType = FieldRefType
+
+	@rdfs:label "VariableSetType"
+	@rdfs:comment '''The set of variables used by a component
+				implementation'''
+	concept VariableSetType < [
+		restricts VariableSetType_variable to min 1
+	]
+
+	@rdfs:label "variable"
+	relation VariableSetType_variable [
+		from VariableSetType
+		to VariableType
+	]
+
+	@rdfs:label "VariableType"
+	@rdfs:comment "An instance of a data type local to a component"
+	concept VariableType < FieldType
+
+	@rdfs:label "initialValue"
+	@rdfs:comment '''The initial value of a variable. This is only
+							valid if the type is scalar.'''
+	scalar property VariableType_initialValue [
+		domain VariableType
+		range LiteralValueType
+		functional
+	]
+
+	@rdfs:label "readOnly"
+	@rdfs:comment '''If true, the variable should be considered as a
+							fixed constant.'''
+	scalar property VariableType_readOnly [
+		domain VariableType
+		range xsd:boolean
+		functional
+	]
+}

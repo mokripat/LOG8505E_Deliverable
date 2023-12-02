@@ -1,0 +1,6 @@
+vocabulary bundle <http://example.com/datasheets/vocabulary/seds-bundle#> as seds-bundle {
+	
+	includes <http://purl.org/dc/elements/1.1/> as dc
+	
+	includes <http://example.com/datasheets/vocabulary/seds#>
+}

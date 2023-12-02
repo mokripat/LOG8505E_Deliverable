@@ -1,0 +1,9 @@
+description bundle <http://example.com/datasheets/description/calculator_bundle#> as calculator_bundle {
+    
+    // The description bundle "uses" the SEDS vocabulary
+    uses <http://example.com/datasheets/vocabulary/seds#>
+
+
+    // The description bundle "uses" the calculator description
+	includes <http://example.com/datasheets/description/calculator#>
+}

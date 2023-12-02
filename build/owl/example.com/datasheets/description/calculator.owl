@@ -1,0 +1,1188 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com/datasheets/description/calculator#"
+     xml:base="http://example.com/datasheets/description/calculator"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:seds="http://example.com/datasheets/vocabulary/seds#"
+     xmlns:calculator="http://example.com/datasheets/description/calculator#">
+    <owl:Ontology rdf:about="http://example.com/datasheets/description/calculator">
+        <owl:imports rdf:resource="http://example.com/datasheets/vocabulary/seds"/>
+        <dc:type rdf:resource="http://opencaesar.io/oml#Description"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ActivityInvocationType_argumentValue -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityInvocationType_argumentValue"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ActivitySetType_activity -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ActivitySetType_activity"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ActivityType_argument -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityType_argument"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ActivityType_body -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityType_body"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#BodyType_mathOperation -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#BodyType_mathOperation"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#BodyType_sendCommandPrimitive -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#BodyType_sendCommandPrimitive"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#CommandSetType_command -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#CommandSetType_command"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_activitySet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_activitySet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_stateMachineSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_stateMachineSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_variableSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentImplementationType_variableSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentSetType_component -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentSetType_component"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentType_implementation -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentType_implementation"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ComponentType_providedInterfaceSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ComponentType_providedInterfaceSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#DataSheetType_device -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#DataSheetType_device"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#DataSheetType_package -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#DataSheetType_package"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#DataTypeSetType_integerDataType -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#DataTypeSetType_integerDataType"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#IntegerDataTypeRangeType_minMaxRange -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataTypeRangeType_minMaxRange"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#IntegerDataType_integerDataEncoding -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataType_integerDataEncoding"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#IntegerDataType_range -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataType_range"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceCommandType_argument -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceCommandType_argument"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationSetType_interface -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationSetType_interface"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationType_commandSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationType_commandSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceSetType_interface -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceSetType_interface"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MathOperationType_operator -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MathOperationType_operator"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MathOperationType_value -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MathOperationType_value"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MathOperationType_variableRef -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MathOperationType_variableRef"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_argumentValue -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_argumentValue"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#OperandType_variableRef -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#OperandType_variableRef"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#PackageType_componentSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#PackageType_componentSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#PackageType_dataTypeSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#PackageType_dataTypeSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#PackageType_declaredInterfaceSet -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#PackageType_declaredInterfaceSet"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_argumentValue -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_argumentValue"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#StateMachineSetType_stateMachine -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineSetType_stateMachine"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#StateMachineType_entryState -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineType_entryState"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#StateMachineType_state -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineType_state"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#StateMachineType_transition -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#StateMachineType_transition"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#TransitionType_do -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#TransitionType_do"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#TransitionType_onCommandPrimitive -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#TransitionType_onCommandPrimitive"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#VariableSetType_variable -->
+
+
+    <owl:ObjectProperty rdf:about="http://example.com/datasheets/vocabulary/seds#VariableSetType_variable"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ActivityInvocationType_activity -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ActivityInvocationType_activity"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#DataEncodingType_byteOrder -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#DataEncodingType_byteOrder"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#DescriptionType_longDescription -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#DescriptionType_longDescription"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#FieldType_type -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#FieldType_type"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_encoding -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_encoding"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_sizeInBits -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType_sizeInBits"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceCommandType_mode -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceCommandType_mode"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#InterfaceType_type -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#InterfaceType_type"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MathOperationType_outputVariableRef -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MathOperationType_outputVariableRef"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_max -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_max"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_min -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_min"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_rangeType -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType_rangeType"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType_name"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#NamedEntityType_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#NamedEntityType_name"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_command -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_command"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_interface -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType_interface"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#OperatorType_operator -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#OperatorType_operator"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#PackageType_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#PackageType_name"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_command -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_command"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_interface -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType_interface"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_name"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_outputVariableRef -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType_outputVariableRef"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#TransitionType_fromState -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#TransitionType_fromState"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#TransitionType_toState -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#TransitionType_toState"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#ValueOperandType_value -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#ValueOperandType_value"/>
+    
+
+
+    <!-- http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef -->
+
+
+    <owl:DatatypeProperty rdf:about="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType_variableRef"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddAndNotifyActivity -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#AddAndNotifyActivity">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityType"/>
+        <seds:ActivityType_argument rdf:resource="http://example.com/datasheets/description/calculator#ArgX1"/>
+        <seds:ActivityType_argument rdf:resource="http://example.com/datasheets/description/calculator#ArgX2"/>
+        <seds:ActivityType_body rdf:resource="http://example.com/datasheets/description/calculator#AddAndNotifyActivityBody"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddAndNotifyActivityBody -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#AddAndNotifyActivityBody">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#BodyType"/>
+        <seds:BodyType_mathOperation rdf:resource="http://example.com/datasheets/description/calculator#AddOperation"/>
+        <seds:BodyType_mathOperation rdf:resource="http://example.com/datasheets/description/calculator#SwapOperation"/>
+        <seds:BodyType_sendCommandPrimitive rdf:resource="http://example.com/datasheets/description/calculator#SendPrimitiveCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddOperation -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#AddOperation">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#MathOperationType"/>
+        <seds:MathOperationType_operator rdf:resource="http://example.com/datasheets/description/calculator#Operator1"/>
+        <seds:MathOperationType_operator rdf:resource="http://example.com/datasheets/description/calculator#Operator2"/>
+        <seds:MathOperationType_value rdf:resource="http://example.com/datasheets/description/calculator#Value"/>
+        <seds:MathOperationType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableRef1"/>
+        <seds:MathOperationType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableRef2"/>
+        <seds:MathOperationType_outputVariableRef>r</seds:MathOperationType_outputVariableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AddTransition -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#AddTransition">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType"/>
+        <seds:TransitionType_do rdf:resource="http://example.com/datasheets/description/calculator#Do"/>
+        <seds:TransitionType_onCommandPrimitive rdf:resource="http://example.com/datasheets/description/calculator#OnCommandPrimitiveAdd"/>
+        <seds:NamedEntityType_name>Add</seds:NamedEntityType_name>
+        <seds:TransitionType_fromState>CalculatorIdleState</seds:TransitionType_fromState>
+        <seds:TransitionType_toState>CalculatorIdleState</seds:TransitionType_toState>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgX1 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#ArgX1">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityArgumentType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>x1</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgX2 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#ArgX2">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityArgumentType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>x2</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ArgumentValue -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#ArgumentValue">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType"/>
+        <seds:OperandType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableRef3"/>
+        <seds:NamedArgumentValueType_name>result</seds:NamedArgumentValueType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#AsyncCalculatorInterface -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#AsyncCalculatorInterface">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationType"/>
+        <seds:InterfaceDeclarationType_commandSet rdf:resource="http://example.com/datasheets/description/calculator#CommandSet"/>
+        <seds:DescriptionType_longDescription>Interface for performing async calculations</seds:DescriptionType_longDescription>
+        <seds:NamedEntityType_name>AsyncCalculatorType</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Calculator -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Calculator">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#DeviceType"/>
+        <seds:NamedEntityType_name>Calculator</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorActivitySet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorActivitySet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivitySetType"/>
+        <seds:ActivitySetType_activity rdf:resource="http://example.com/datasheets/description/calculator#AddAndNotifyActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorComponent -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorComponent">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ComponentType"/>
+        <seds:ComponentType_implementation rdf:resource="http://example.com/datasheets/description/calculator#Implementation"/>
+        <seds:ComponentType_providedInterfaceSet rdf:resource="http://example.com/datasheets/description/calculator#CalculatorInterfaceSetType"/>
+        <seds:DescriptionType_longDescription></seds:DescriptionType_longDescription>
+        <seds:NamedEntityType_name>Calculator</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorDataSheet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorDataSheet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#DataSheetType"/>
+        <seds:DataSheetType_device rdf:resource="http://example.com/datasheets/description/calculator#Calculator"/>
+        <seds:DataSheetType_package rdf:resource="http://example.com/datasheets/description/calculator#Package"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorEntryState -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorEntryState">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#EntryStateType"/>
+        <seds:NamedEntityType_name>Off</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorIdleState -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorIdleState">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#StateType"/>
+        <seds:NamedEntityType_name>Idle</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorInterfaceSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorInterfaceSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceDeclarationSetType"/>
+        <seds:InterfaceDeclarationSetType_interface rdf:resource="http://example.com/datasheets/description/calculator#AsyncCalculatorInterface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorInterfaceSetType -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorInterfaceSetType">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceSetType"/>
+        <seds:InterfaceSetType_interface rdf:resource="http://example.com/datasheets/description/calculator#InterfaceType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorStateMachine -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorStateMachine">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#StateMachineType"/>
+        <seds:StateMachineType_entryState rdf:resource="http://example.com/datasheets/description/calculator#CalculatorEntryState"/>
+        <seds:StateMachineType_state rdf:resource="http://example.com/datasheets/description/calculator#CalculatorIdleState"/>
+        <seds:StateMachineType_transition rdf:resource="http://example.com/datasheets/description/calculator#AddTransition"/>
+        <seds:StateMachineType_transition rdf:resource="http://example.com/datasheets/description/calculator#InitTransition"/>
+        <seds:NamedEntityType_name>Calculator</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CalculatorStateMachineSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CalculatorStateMachineSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#StateMachineSetType"/>
+        <seds:StateMachineSetType_stateMachine rdf:resource="http://example.com/datasheets/description/calculator#CalculatorStateMachine"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandAdd -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CommandAdd">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceCommandType"/>
+        <seds:InterfaceCommandType_argument rdf:resource="http://example.com/datasheets/description/calculator#Result"/>
+        <seds:InterfaceCommandType_argument rdf:resource="http://example.com/datasheets/description/calculator#X"/>
+        <seds:InterfaceCommandType_argument rdf:resource="http://example.com/datasheets/description/calculator#Y"/>
+        <seds:DescriptionType_longDescription>Add two numbers</seds:DescriptionType_longDescription>
+        <seds:InterfaceCommandType_mode>async</seds:InterfaceCommandType_mode>
+        <seds:NamedEntityType_name>Add</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandInit -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CommandInit">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceCommandType"/>
+        <seds:DescriptionType_longDescription>Initialize the calculator</seds:DescriptionType_longDescription>
+        <seds:InterfaceCommandType_mode>async</seds:InterfaceCommandType_mode>
+        <seds:NamedEntityType_name>Init</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#CommandSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#CommandSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#CommandSetType"/>
+        <seds:CommandSetType_command rdf:resource="http://example.com/datasheets/description/calculator#CommandAdd"/>
+        <seds:CommandSetType_command rdf:resource="http://example.com/datasheets/description/calculator#CommandInit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#ComponentSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#ComponentSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ComponentSetType"/>
+        <seds:ComponentSetType_component rdf:resource="http://example.com/datasheets/description/calculator#CalculatorComponent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#DataTypeSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#DataTypeSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#DataTypeSetType"/>
+        <seds:DataTypeSetType_integerDataType rdf:resource="http://example.com/datasheets/description/calculator#IntegerDataType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Do -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Do">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ActivityInvocationType"/>
+        <seds:ActivityInvocationType_argumentValue rdf:resource="http://example.com/datasheets/description/calculator#NamedArgX"/>
+        <seds:ActivityInvocationType_argumentValue rdf:resource="http://example.com/datasheets/description/calculator#NamedArgY"/>
+        <seds:ActivityInvocationType_activity>AddAndNotifyActivity</seds:ActivityInvocationType_activity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Implementation -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Implementation">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ComponentImplementationType"/>
+        <seds:ComponentImplementationType_activitySet rdf:resource="http://example.com/datasheets/description/calculator#CalculatorActivitySet"/>
+        <seds:ComponentImplementationType_stateMachineSet rdf:resource="http://example.com/datasheets/description/calculator#CalculatorStateMachineSet"/>
+        <seds:ComponentImplementationType_variableSet rdf:resource="http://example.com/datasheets/description/calculator#variableSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#InitTransition -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#InitTransition">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#TransitionType"/>
+        <seds:TransitionType_onCommandPrimitive rdf:resource="http://example.com/datasheets/description/calculator#OnCommandPrimitiveInit"/>
+        <seds:NamedEntityType_name>Init</seds:NamedEntityType_name>
+        <seds:TransitionType_fromState>CalculatorEntryState</seds:TransitionType_fromState>
+        <seds:TransitionType_toState>CalculatorIdleState</seds:TransitionType_toState>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#IntegerDataEncoding -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#IntegerDataEncoding">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataEncodingType"/>
+        <seds:DataEncodingType_byteOrder>littleEndian</seds:DataEncodingType_byteOrder>
+        <seds:IntegerDataEncodingType_encoding>twosComplement</seds:IntegerDataEncodingType_encoding>
+        <seds:IntegerDataEncodingType_sizeInBits rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">32</seds:IntegerDataEncodingType_sizeInBits>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#IntegerDataType -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#IntegerDataType">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataType"/>
+        <seds:IntegerDataType_integerDataEncoding rdf:resource="http://example.com/datasheets/description/calculator#IntegerDataEncoding"/>
+        <seds:IntegerDataType_range rdf:resource="http://example.com/datasheets/description/calculator#NumberRange"/>
+        <seds:NamedEntityType_name>Number</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#InterfaceType -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#InterfaceType">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#InterfaceType"/>
+        <seds:InterfaceType_type>CalculatorInterfaceSet</seds:InterfaceType_type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#MinMaxRange -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#MinMaxRange">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#MinMaxRangeType"/>
+        <seds:MinMaxRangeType_max>1000000</seds:MinMaxRangeType_max>
+        <seds:MinMaxRangeType_min>-1000000</seds:MinMaxRangeType_min>
+        <seds:MinMaxRangeType_rangeType>inclusiveMinInclusiveMax</seds:MinMaxRangeType_rangeType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#NamedArgX -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#NamedArgX">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType"/>
+        <seds:OperandType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableXRef"/>
+        <seds:NamedArgumentValueType_name>ArgX1</seds:NamedArgumentValueType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#NamedArgY -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#NamedArgY">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#NamedArgumentValueType"/>
+        <seds:OperandType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableYRef"/>
+        <seds:NamedArgumentValueType_name>ArgX2</seds:NamedArgumentValueType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#NumberRange -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#NumberRange">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#IntegerDataTypeRangeType"/>
+        <seds:IntegerDataTypeRangeType_minMaxRange rdf:resource="http://example.com/datasheets/description/calculator#MinMaxRange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OnCommandPrimitiveAdd -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#OnCommandPrimitiveAdd">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType"/>
+        <seds:OnCommandPrimitiveType_argumentValue rdf:resource="http://example.com/datasheets/description/calculator#SinkArg1"/>
+        <seds:OnCommandPrimitiveType_argumentValue rdf:resource="http://example.com/datasheets/description/calculator#SinkArg2"/>
+        <seds:OnCommandPrimitiveType_command>CommandAdd</seds:OnCommandPrimitiveType_command>
+        <seds:OnCommandPrimitiveType_interface>AsyncCalculatorInterface</seds:OnCommandPrimitiveType_interface>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OnCommandPrimitiveInit -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#OnCommandPrimitiveInit">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#OnCommandPrimitiveType"/>
+        <seds:OnCommandPrimitiveType_command>CommandInit</seds:OnCommandPrimitiveType_command>
+        <seds:OnCommandPrimitiveType_interface>AsyncCalculatorInterface</seds:OnCommandPrimitiveType_interface>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Operator1 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Operator1">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType"/>
+        <seds:OperatorType_operator>add</seds:OperatorType_operator>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Operator2 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Operator2">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType"/>
+        <seds:OperatorType_operator>add</seds:OperatorType_operator>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#OperatorSwap -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#OperatorSwap">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#OperatorType"/>
+        <seds:OperatorType_operator>swap</seds:OperatorType_operator>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Package -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Package">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#PackageType"/>
+        <seds:PackageType_componentSet rdf:resource="http://example.com/datasheets/description/calculator#ComponentSet"/>
+        <seds:PackageType_dataTypeSet rdf:resource="http://example.com/datasheets/description/calculator#DataTypeSet"/>
+        <seds:PackageType_declaredInterfaceSet rdf:resource="http://example.com/datasheets/description/calculator#CalculatorInterfaceSet"/>
+        <seds:PackageType_name>CalculatorPackage</seds:PackageType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Result -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Result">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#CommandArgumentType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>result</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SendPrimitiveCommand -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#SendPrimitiveCommand">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#SendCommandPrimitiveType"/>
+        <seds:SendCommandPrimitiveType_argumentValue rdf:resource="http://example.com/datasheets/description/calculator#ArgumentValue"/>
+        <seds:SendCommandPrimitiveType_command>Add</seds:SendCommandPrimitiveType_command>
+        <seds:SendCommandPrimitiveType_interface>AsyncCalculator</seds:SendCommandPrimitiveType_interface>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SinkArg1 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#SinkArg1">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType"/>
+        <seds:SinkArgumentValueType_name>ArgX1</seds:SinkArgumentValueType_name>
+        <seds:SinkArgumentValueType_outputVariableRef>VariableX</seds:SinkArgumentValueType_outputVariableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SinkArg2 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#SinkArg2">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#SinkArgumentValueType"/>
+        <seds:SinkArgumentValueType_name>ArgX2</seds:SinkArgumentValueType_name>
+        <seds:SinkArgumentValueType_outputVariableRef>VariableY</seds:SinkArgumentValueType_outputVariableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#SwapOperation -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#SwapOperation">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#MathOperationType"/>
+        <seds:MathOperationType_operator rdf:resource="http://example.com/datasheets/description/calculator#OperatorSwap"/>
+        <seds:MathOperationType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableRefR"/>
+        <seds:MathOperationType_variableRef rdf:resource="http://example.com/datasheets/description/calculator#VariableRefResult"/>
+        <seds:MathOperationType_outputVariableRef>r</seds:MathOperationType_outputVariableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Value -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Value">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#ValueOperandType"/>
+        <seds:ValueOperandType_value>2</seds:ValueOperandType_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableR -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableR">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>r</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef1 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableRef1">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>ArgX1</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef2 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableRef2">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>ArgX2</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRef3 -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableRef3">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>VariableResult</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRefR -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableRefR">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>VariableR</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableRefResult -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableRefResult">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>VariableResult</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableResult -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableResult">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>result</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableTmp -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableTmp">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>tmp</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableX -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableX">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>x</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableXRef -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableXRef">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>VariableX</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableY -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableY">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>y</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#VariableYRef -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#VariableYRef">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableRefOperandType"/>
+        <seds:VariableRefOperandType_variableRef>VariableY</seds:VariableRefOperandType_variableRef>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#X -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#X">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#CommandArgumentType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>x</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#Y -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#Y">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#CommandArgumentType"/>
+        <seds:FieldType_type>IntegerDataType</seds:FieldType_type>
+        <seds:NamedEntityType_name>y</seds:NamedEntityType_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com/datasheets/description/calculator#variableSet -->
+
+
+    <owl:NamedIndividual rdf:about="http://example.com/datasheets/description/calculator#variableSet">
+        <rdf:type rdf:resource="http://example.com/datasheets/vocabulary/seds#VariableSetType"/>
+        <seds:VariableSetType_variable rdf:resource="http://example.com/datasheets/description/calculator#VariableR"/>
+        <seds:VariableSetType_variable rdf:resource="http://example.com/datasheets/description/calculator#VariableResult"/>
+        <seds:VariableSetType_variable rdf:resource="http://example.com/datasheets/description/calculator#VariableTmp"/>
+        <seds:VariableSetType_variable rdf:resource="http://example.com/datasheets/description/calculator#VariableX"/>
+        <seds:VariableSetType_variable rdf:resource="http://example.com/datasheets/description/calculator#VariableY"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.17.2020-11-07T15:03:35Z) https://github.com/owlcs/owlapi/ -->
+
+

@@ -152,6 +152,104 @@ Both class variables have specified:
 
 ## Instance Model - Calculator
 
+To show concrete syntax we chose to instantiate DataSheet specification for Calculator from one of the given Space Creator examples
+The instance is a simple calculator with the ability to sum two integers from range <-1000000,1000000>
+
+It contains:
+- StateMachine with 2 states - Init and Idle
+- 2 commands: Init and Add
+- 1 activity - AddAndNotifyActivity
+- 5 variables for calculation purposes
+- 2 operations with two arguments - Add and Swap
+
+### Description syntax example
+In following images we will describe the description of the calculator
+
+<figure>
+    <img src="img_4.png"
+         alt="Example 4">
+    <figcaption>Example #4 - CalculatorDataSheet</figcaption>
+</figure>
+
+To define calculator, we started to create instances of all elements in the DataSheet metamodel
+First we created the instance of the DataSheet with name CalculatorDataSheet and instance of related elements: Package, DeviceType and DataTypeSetType.
+Then it was able to tie those elements with relations.
+
+<figure>
+    <img src="img_7.png"
+         alt="Example 5">
+    <figcaption>Example #5 - Number</figcaption>
+</figure>
+
+As the calculator need to deal with numbers it was needed to create its instance and set
+its range and encoding.
+
+<figure>
+    <img src="img_8.png"
+         alt="Example 6">
+    <figcaption>Example #6 - Implementation</figcaption>
+</figure>
+
+On the example #5 is created instance of ComponentImplementationType and a VariableSetType where are definitions
+of the 5 variables that the calculator needs to work with.
+
+<figure>
+    <img src="img_9.png"
+         alt="Example 7">
+    <figcaption>Example #7 - Activity</figcaption>
+</figure>
+
+To create an activity, we instantiated the ActivityType to the AddAndNotifyActivity, also this activity
+has two arguments, that are two numbers that will be added.
+
+<figure>
+    <img src="img_10.png"
+         alt="Example 8">
+    <figcaption>Example #8 - StateMachine</figcaption>
+</figure>
+
+Then we also created a state machine that had two states which has been also instantiated
+and then associated with this CalculatorStateMachine.
+
+
+<figure>
+    <img src="img_11.png"
+         alt="Example 9">
+    <figcaption>Example #9 - Transition</figcaption>
+</figure>
+
+On the Example #9 is the instance of one transition. This transition changes state from the CalculatorIdleState to the CalculatorIdleState.
+<figure>
+    <img src="img_12.png"
+         alt="Example 10">
+    <figcaption>Example #10 - Activity instance</figcaption>
+</figure>
+
+## Instance model
+On these images we can see how the vocabulary corresponds to the metamodel.
+It is hard to display the whole model, so for the better understandability we provide
+a simplified model which contains all important parts.
+
+In the Example #11 and Example #12 we can see a higher level view with the system as a whole and 
+the relations between all elements of the description of the electronic datasheet.
+
+<figure>
+    <img src="img_13.png"
+         alt="Example 11">
+    <figcaption>Example #11 - Instance model - first part</figcaption>
+</figure>
+
+<figure>
+    <img src="img_14.png"
+         alt="Example 12">
+    <figcaption>Example #12 - Instance model - second part</figcaption>
+</figure>
+
+
+
+
+
+
 ## Reflection
 
 Reflecting on our project journey, it's evident that we struggled with the proto meta-model that hindered our progress significantly. 

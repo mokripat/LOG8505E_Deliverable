@@ -38,11 +38,23 @@ This resulted in obtaining an output from the adapter which we considered as a b
 it as a "proto" meta-model. However, as we discovered throughout time, it was far from a complete and usable meta-model. To put it simply, it generated
 all elements from the specification but not their relationships or generalization.
 
+<figure>
+    <img src="img.png"
+         alt="Proto meta-model visualization">
+    <figcaption>Proto meta-model visualization</figcaption>
+</figure>
+
 Over a span of four weeks, our team diligently worked on tuning the meta-model manually. By analysing the XSD specification
-we created few python scripts that would parse the relationships, generalization and documentation from it and
+we created few python scripts that would parse the relationships, generalization and documentation from it to
 enhance the proto meta-model. Despite our efforts, the complexity of SEDS domain was too high to spot and finishing
 all constraints, restrictions and details of the specification. Instantiating the meta-model was impossible. At least,
 it helped us greatly in understanding the domain.
+
+<figure>
+    <img src="img_1.png"
+         alt="Proto meta-model improvement">
+    <figcaption>Proto meta-model improvement, the complexity does not allow view of the whole meta-model even on the smallest zoom ration (5%)</figcaption>
+</figure>
 
 After second round of feedback, we reported the exact bug to Elaasar Maged, which by cooperation was fixed and we obtained
 the correct and fully-detailed OML vocabulary. However, we had only a week left to complete our assignment.

@@ -12,7 +12,7 @@ The focus of the course was to introduce students to Model Driven Software Engin
 let them practice and test obtained knowledge about DSMLs (Domain Specific Modeling Language)
 on real-world project. The selected domain of the project were Electronic Data Sheets (EDS) in the space industry.
 Throughout this course we had an opportunity to cooperate and get feedback from OpenCaesar and NASA
-engineers. This post is the final output from our assignment. For all output of our work check [Github](https://github.com/mokripat/LOG8505E_Deliverable)
+engineers. This post is the final output from our assignment. For all output of our work check [Github](https://github.com/mokripat/LOG8505EDeliverable)
 repository of this project.
 
 ## Problem description
@@ -33,7 +33,7 @@ from the model.
 ## Progress background
 
 During the course of our project involving Ecore to the OML Adapter, we encountered a bug that led
-to a _NullPointerException_ within the Adapter. We tried to fix this issue independently, we undertook 
+to a NullPointerException within the Adapter. We tried to fix this issue independently, we undertook 
 debugging efforts which resulted in commenting out a line of code responsible for triggering this failure. 
 This resulted in obtaining an output from the adapter which we considered as a base of our OML dictionary. We referred to
 it as a "proto" meta-model. However, as we discovered throughout time, it was far from a complete and usable meta-model. To put it simply, it generated
@@ -95,30 +95,59 @@ In this section, it is shown how different OML keywords in the vocabulary were u
 examples showcase abstract syntax which will be used in the example in the next section.
 
 #### Example 1
+
 <figure>
-    <img src="img_3.png"
+    <img src="img_6.png"
          alt="Example 1">
-    <figcaption>Example #1 - IntegerDataEncodingType</figcaption>
+    <figcaption>Example #1 - IntegerDataType</figcaption>
 </figure>
 
-_IntegerDataEncodingType_ uses **concept** keyword to define encoding type for integers which derives from NumericDataType.
-It contains two class variables _encoding_ and _sizeInBits_. These class variables are defined using **scalar property**.
-With usage of **restricts** we specify that every instance of this element must have values of these variables
-assigned and exactly one time.
+To define integers, IntegerDataType was defined using **concept** keyword. It is a specialization of the NumericDataType.
 
-Both class variables have specified:
-- **domain** to express being assigned to _IntegerDataEncodingType_
-- **range** to express allowed values (list of values or range)
-- **functional** trait expressing that instance of the class variable can belong only to one instance of the _IntegerDataEncodingType_
+It possesses a single class variable named integerDataEncoding, defined as a **relation**. This means that it expects
+an instance as a value and creates a connection between two instances when assigned. 
+The integerDataEncoding relation is guarded by the following constraints:
+
+- **from** - specifies that this relation originates from instances of IntegerDataType.
+- **to** - indicates that the relation points to instances of IntegerDataEncodingType.
+- **functional** - implies that each instance of IntegerDataType can be associated with at most one instance of IntegerDataEncodingType through this relation.
+
+The IntegerDataType concept is further restricted by specifying exactly one value for the IntegerDataType_range.
 
 #### Example 2
 
 <figure>
-    <img src="img_4.png"
+    <img src="img_5.png"
          alt="Example 2">
     <figcaption>Example #2 - DataEncodingType and ByteOrderType</figcaption>
 </figure>
 
+To define abstract type DataEncodingType, **aspect** keyword was used. It contains a single class variable named byteOrder,
+established using the **scalar property** construct. The byteOrder class variable is defined with the following constraints:
+
+- **domain** - specifies that this property is applicable to instances of the DataEncodingType.
+- **range** - indicates the possible values which are enumerated under the ByteOrderType.
+- **functional** - implies that each instance of DataEncodingType can possess only one value for byteOrder.
+
+ByteOrderType is a **scalar** type that defines enumeration of two specific values - "bigEndian" and "littleEndian" - representing the two possible endianness formats.
+
+#### Example 3
+
+<figure>
+    <img src="img_3.png"
+         alt="Example 3">
+    <figcaption>Example #3 - IntegerDataEncodingType</figcaption>
+</figure>
+
+IntegerDataEncodingType uses **concept** keyword to define encoding type for integers which derives from DataEncodingType.
+It contains two class variables encoding and sizeInBits. These class variables are defined using **scalar property**.
+With usage of **restricts** we specify that every instance of this element must have values of these variables
+assigned and exactly one time.
+
+Both class variables have specified:
+- **domain** to express being assigned to IntegerDataEncodingType
+- **range** to express allowed values (list of values or range)
+- **functional** trait expressing that instance of the class variable can belong only to one instance of the IntegerDataEncodingType
 
 
 ## Instance Model - Calculator

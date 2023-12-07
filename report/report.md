@@ -208,7 +208,7 @@ its range and encoding.
     <figcaption>Example #6 - Implementation</figcaption>
 </figure>
 
-On the example #5 is created instance of ComponentImplementationType and a VariableSetType where are definitions
+In the example #5 is created instance of ComponentImplementationType and a VariableSetType where are definitions
 of the 5 variables that the calculator needs to work with.
 
 <figure>
@@ -236,7 +236,7 @@ and then associated with this CalculatorStateMachine.
     <figcaption>Example #9 - Transition</figcaption>
 </figure>
 
-On the Example #9 is the instance of one transition. This transition changes state from the CalculatorIdleState to the CalculatorIdleState.
+In the Example #9 is the instance of one transition. This transition changes state from the CalculatorIdleState to the CalculatorIdleState.
 <figure>
     <img src="resources/img_12.png"
          alt="Example 10">

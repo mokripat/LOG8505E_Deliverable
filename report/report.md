@@ -61,6 +61,34 @@ the correct and fully-detailed OML vocabulary. However, we had only a week left 
 
 ## Metamodel (Vocabulary)
 
+In this section, we would like to present and explain the final OML vocabulary. As could be seen in previous
+section, the meta-model is quite complex. With documenting comments, it has 3658 lines.
+
+Firstly, the list of used OML keywords to define elements of the meta-model is as follows:
+- Aspect - used for abstract types
+- Concept - used for defining specific types (classes)
+- Relation - used for modeling relation between classes
+- Scalar - used to define sets of values that can be assigned
+- Scalar property - used to specify types properties (class variables)
+
+Secondly, the list of used OML keywords to define constraints of the meta-model is as follows:
+- functional - can have a maximum one value per instance (constraint for relations)
+- domain - constraint for type of scalar property
+- range - constraint for range of values that scalar property can have
+- restricts (to exactly, to min) - constraint how many instances of scalar property can type have
+
+In the following image, the high-level schema of the metamodel corresponding to official specification.
+It describes all main components of the EDS. Root component Datasheet consists of two parts: 
+- Device - wraps information and meta-data of the concrete device
+- Package - wraps three major parts defining the funcionality, interface and used data types of the device
+
+<figure>
+    <img src="img_2.png"
+         alt="Datasheets schema">
+    <figcaption>High-level schema of the metamodel</figcaption>
+</figure>
+
+### Vocabulary examples
 
 
 ## Instance Model - Calculator

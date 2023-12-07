@@ -12,7 +12,8 @@ The focus of the course was to introduce students to Model Driven Software Engin
 let them practice and test obtained knowledge about DSMLs (Domain Specific Modeling Language)
 on real-world project. The selected domain of the project were Electronic Data Sheets (EDS) in the space industry.
 Throughout this course we had an opportunity to cooperate and get feedback from OpenCaesar and NASA
-engineers. This post is the final output from our assignment.
+engineers. This post is the final output from our assignment. For all output of our work check [Github](https://github.com/mokripat/LOG8505E_Deliverable)
+repository of this project.
 
 ## Problem description
 
@@ -73,7 +74,7 @@ Firstly, the list of used OML keywords to define elements of the meta-model is a
 
 Secondly, the list of used OML keywords to define constraints of the meta-model is as follows:
 - functional - can have a maximum one value per instance (constraint for relations)
-- domain - constraint for type of scalar property
+- domain - constraint for type that scalar property belongs to
 - range - constraint for range of values that scalar property can have
 - restricts (to exactly, to min) - constraint how many instances of scalar property can type have
 
@@ -89,6 +90,35 @@ It describes all main components of the EDS. Root component Datasheet consists o
 </figure>
 
 ### Vocabulary examples
+
+In this section, it is shown how different OML keywords in the vocabulary were used. Selected
+examples showcase abstract syntax which will be used in the example in the next section.
+
+#### Example 1
+<figure>
+    <img src="img_3.png"
+         alt="Example 1">
+    <figcaption>Example #1 - IntegerDataEncodingType</figcaption>
+</figure>
+
+_IntegerDataEncodingType_ uses **concept** keyword to define encoding type for integers which derives from NumericDataType.
+It contains two class variables _encoding_ and _sizeInBits_. These class variables are defined using **scalar property**.
+With usage of **restricts** we specify that every instance of this element must have values of these variables
+assigned and exactly one time.
+
+Both class variables have specified:
+- **domain** to express being assigned to _IntegerDataEncodingType_
+- **range** to express allowed values (list of values or range)
+- **functional** trait expressing that instance of the class variable can belong only to one instance of the _IntegerDataEncodingType_
+
+#### Example 2
+
+<figure>
+    <img src="img_4.png"
+         alt="Example 2">
+    <figcaption>Example #2 - DataEncodingType and ByteOrderType</figcaption>
+</figure>
+
 
 
 ## Instance Model - Calculator

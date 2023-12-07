@@ -17,6 +17,23 @@ repository of this project.
 
 ## Problem description
 
+Electronic Data Sheets (EDS) are comprehensive documents that contain detailed information about various 
+electronic components used in space missions, satellites, spacecraft, and other aerospace applications. These sheets
+serve as a standardized reference for engineers, designers, and technicians involved in the development, maintenance,
+and repair of electronic systems used in space exploration. These sheets play a vital role in the design, testing, and operation of electronic systems critical for space exploration endeavors.
+
+The high-level objective of this project was to explore, analyse and data-mine this standardized domain. By creating the OML model
+we would face Model-Driven Engineering challenges, dive into complexity and standardization of EDS and come up
+with feedback or potentially improvements of the EDS regarding data interoperability in Space Industry.
+
+We were given task to create a meta-model of EDS using OML. It had four stages OML vocabulary, OML description, 
+writing SPARQL queries and some form of transformation. Those four stages corresponds to traditional steps of MDD
+using DSML. 
+
+Our team main goal was to create an OML meta-model based on already existing XSD specification and data-mine information
+from it using SPARQL. With this approach we could test and verify this specification opposed to the official documentation
+of EDS. Throughout this process we would collect knowledge and feedback to provide.
+
 ## Methodology
 
 The methodology included comprehensive examination and study of the SEDS domain. For creating of the meta-model itself,
@@ -25,8 +42,9 @@ it served as our source of truth. To create the meta-model, our approach was to 
 by various tools. Initially, we employed the tool available [here](https://www.davidpace.de/generating-emf-models-from-xml-schema-definitions-xsds/) 
 for the first transformation, converting the XSD specification into an Ecore model. 
 Subsequently, the Ecore model underwent a second transformation utilizing the tool 
-available at OpenCaesar [Github](https://github.com/opencaesar/ecore-adapter), transitioning it into an OML vocabulary. 
-This was one of the recommended methodologies. Afterward, from the abstract OML vocabulary we instantiated a 
+available at OpenCaesar [Github](https://github.com/opencaesar/ecore-adapter), transitioning it into an OML vocabulary.
+This was one of the recommended methodologies. For working with the OML, we were advised to use a tool called [Rosetta](https://github.com/opencaesar/oml-rosetta)
+which is built on Eclipse IDE. Afterward, from the abstract OML vocabulary we instantiated a 
 concrete OML description. Having the description, it is possible to create a SPARQL queries to data-mine information
 from the model.
 

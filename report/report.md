@@ -264,10 +264,6 @@ the relations between all elements of the description of the electronic datashee
 </figure>
 
 
-
-
-
-
 ## Reflection
 
 Reflecting on our project journey, it's evident that we struggled with the proto meta-model that hindered our progress significantly. 
@@ -289,3 +285,15 @@ our future approaches, underscoring the significance of proactive collaboration 
 to streamline our path forward.
 
 ## Conclusion
+In this project we created a complete and precise meta model of Spacecraft onboard interface services
+electronic data sheets.
+We analysed the domain of the Electronic Data Sheets and created an OML meta model using the provided tools, namely
+- Eclipse for converting a XSD model to the Ecore model
+- Ecore to OML adapter for creating OML meta model from Ecore meta model.
+
+During the transformations of the metamodel we ran into several problems with the provided ECORE to OML, which we firstly were trying to repair ourselves 
+but without success. Then after contacting Maged Elaasar - the author of the Ecore to OML adapter, it was able to create the metamodel in OML.
+However due to these problems after the repairing of the tool we had about two days to create some reasonable output. 
+We ended up creating a description of the calculator instance, but due to a Gradle :owlReason task errors we hadn't been able to
+create SPARQL queries.
+Our output can be seen in a [github repository](https://github.com/mokripat/LOG8505E_Deliverable).

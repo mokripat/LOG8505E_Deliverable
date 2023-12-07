@@ -58,7 +58,7 @@ it as a "proto" meta-model. However, as we discovered throughout time, it was fa
 all elements from the specification but not their relationships or generalization.
 
 <figure>
-    <img src="img.png"
+    <img src="resources/img.png"
          alt="Proto meta-model visualization">
     <figcaption>Proto meta-model visualization</figcaption>
 </figure>
@@ -70,7 +70,7 @@ all constraints, restrictions and details of the specification. Instantiating th
 it helped us greatly in understanding the domain.
 
 <figure>
-    <img src="img_1.png"
+    <img src="resources/img_1.png"
          alt="Proto meta-model improvement">
     <figcaption>Proto meta-model improvement, the complexity does not allow view of the whole meta-model even on the smallest zoom ration (5%)</figcaption>
 </figure>
@@ -102,7 +102,7 @@ It describes all main components of the EDS. Root component Datasheet consists o
 - Package - wraps three major parts defining the funcionality, interface and used data types of the device
 
 <figure>
-    <img src="img_2.png"
+    <img src="resources/img_2.png"
          alt="Datasheets schema">
     <figcaption>High-level schema of the metamodel</figcaption>
 </figure>
@@ -115,7 +115,7 @@ examples showcase abstract syntax which will be used in the example in the next 
 #### Example 1
 
 <figure>
-    <img src="img_6.png"
+    <img src="resources/img_6.png"
          alt="Example 1">
     <figcaption>Example #1 - IntegerDataType</figcaption>
 </figure>
@@ -135,7 +135,7 @@ The IntegerDataType concept is further restricted by specifying exactly one valu
 #### Example 2
 
 <figure>
-    <img src="img_5.png"
+    <img src="resources/img_5.png"
          alt="Example 2">
     <figcaption>Example #2 - DataEncodingType and ByteOrderType</figcaption>
 </figure>
@@ -152,7 +152,7 @@ ByteOrderType is a **scalar** type that defines enumeration of two specific valu
 #### Example 3
 
 <figure>
-    <img src="img_3.png"
+    <img src="resources/img_3.png"
          alt="Example 3">
     <figcaption>Example #3 - IntegerDataEncodingType</figcaption>
 </figure>
@@ -184,7 +184,7 @@ It contains:
 In following images we will describe the description of the calculator
 
 <figure>
-    <img src="img_4.png"
+    <img src="resources/img_4.png"
          alt="Example 4">
     <figcaption>Example #4 - CalculatorDataSheet</figcaption>
 </figure>
@@ -194,7 +194,7 @@ First we created the instance of the DataSheet with name CalculatorDataSheet and
 Then it was able to tie those elements with relations.
 
 <figure>
-    <img src="img_7.png"
+    <img src="resources/img_7.png"
          alt="Example 5">
     <figcaption>Example #5 - Number</figcaption>
 </figure>
@@ -203,7 +203,7 @@ As the calculator need to deal with numbers it was needed to create its instance
 its range and encoding.
 
 <figure>
-    <img src="img_8.png"
+    <img src="resources/img_8.png"
          alt="Example 6">
     <figcaption>Example #6 - Implementation</figcaption>
 </figure>
@@ -212,7 +212,7 @@ On the example #5 is created instance of ComponentImplementationType and a Varia
 of the 5 variables that the calculator needs to work with.
 
 <figure>
-    <img src="img_9.png"
+    <img src="resources/img_9.png"
          alt="Example 7">
     <figcaption>Example #7 - Activity</figcaption>
 </figure>
@@ -221,7 +221,7 @@ To create an activity, we instantiated the ActivityType to the AddAndNotifyActiv
 has two arguments, that are two numbers that will be added.
 
 <figure>
-    <img src="img_10.png"
+    <img src="resources/img_10.png"
          alt="Example 8">
     <figcaption>Example #8 - StateMachine</figcaption>
 </figure>
@@ -231,14 +231,14 @@ and then associated with this CalculatorStateMachine.
 
 
 <figure>
-    <img src="img_11.png"
+    <img src="resources/img_11.png"
          alt="Example 9">
     <figcaption>Example #9 - Transition</figcaption>
 </figure>
 
 On the Example #9 is the instance of one transition. This transition changes state from the CalculatorIdleState to the CalculatorIdleState.
 <figure>
-    <img src="img_12.png"
+    <img src="resources/img_12.png"
          alt="Example 10">
     <figcaption>Example #10 - Activity instance</figcaption>
 </figure>
@@ -252,13 +252,13 @@ In the Example #11 and Example #12 we can see a higher level view with the syste
 the relations between all elements of the description of the electronic datasheet.
 
 <figure>
-    <img src="img_13.png"
+    <img src="resources/img_13.png"
          alt="Example 11">
     <figcaption>Example #11 - Instance model - first part</figcaption>
 </figure>
 
 <figure>
-    <img src="img_14.png"
+    <img src="resources/img_14.png"
          alt="Example 12">
     <figcaption>Example #12 - Instance model - second part</figcaption>
 </figure>

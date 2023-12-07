@@ -154,4 +154,22 @@ Both class variables have specified:
 
 ## Reflection
 
+Reflecting on our project journey, it's evident that we struggled with the proto meta-model that hindered our progress significantly. 
+The time invested in completing the prototype output through the adapter ended up being a loss, costing us not finishing on time.
+We realized, later than anticipated, that Maged could have helped us much earlier, highlighting a need 
+for more proactive communication and inquiry. Our oversight resulted in missed opportunities to delve deeper
+into transformation processes and accomplish our goal. 
+
+However, despite the challenges, 
+this experience was not without earning valuable knowledge and contributions. 
+We sharpen our proficiency in Python, deeply learned about SEDS concepts, and delved into the fundamentals of the OML
+language within the Eclipse environment. Constructing abstract syntax and integrating it with concrete syntax
+in a complex domain taught us perseverance in the face of complexity. Lastly, the discovery and fix of the Ecore
+to OML adapter bug helped the tool to be more robust for future uses.
+
+Undoubtedly, this journey underscored the inherent difficulties, reminding us 
+of the resilience needed when navigating complicated tasks. Looking ahead, these insights will profoundly influence
+our future approaches, underscoring the significance of proactive collaboration and comprehensive exploration
+to streamline our path forward.
+
 ## Conclusion

@@ -12,8 +12,7 @@ The focus of the course was to introduce students to Model Driven Software Engin
 let them practice and test obtained knowledge about DSMLs (Domain Specific Modeling Language)
 on real-world projects. The selected domain of the project was Electronic Data Sheets (EDS) in the space industry.
 Throughout this course, we had an opportunity to cooperate and get feedback from OpenCaesar and NASA
-engineers. This post is the final output from our assignment. For all output of our work check [Github](https://github.com/mokripat/LOG8505EDeliverable)
-repository of this project.
+engineers. This post is the final output from our assignment. For all output of our work check [Github repository](https://github.com/mokripat/LOG8505EDeliverable) of this project.
 
 ## Problem description
 
@@ -310,6 +309,6 @@ We analyzed the domain of the Electronic Data Sheets and created an OML meta-mod
 During the transformations of the metamodel, we ran into several problems with the provided ECORE to OML, which we first tried to repair ourselves
 but without success. Then after contacting Maged Elaasar - the author of the Ecore to OML adapter, it was able to create the metamodel in OML.
 However due to these problems after repairing the tool we had about two days to create some reasonable output.
-We ended up creating a description of the calculator instance, but due to Gradle :owlReason task errors we have been able to
-create SPARQL queries.
+We ended up creating a description of the calculator instance, but due to Gradle :owlReason task errors we have not been able to
+create SPARQL queries. Because of this we were very close but ultimately failed to reach our main goal.
 Our output can be seen in a [GitHub repository](https://github.com/mokripat/LOG8505E_Deliverable).

@@ -56,7 +56,7 @@ This resulted in obtaining an output from the adapter which we considered as a b
 it as a "proto" meta-model. However, as we discovered throughout time, it was far from a complete and usable meta-model. To put it simply, it generated
 all elements from the specification but not their relationships or generalizations.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img.png"
          alt="Proto meta-model visualization">
     <figcaption>Proto meta-model visualization</figcaption>
@@ -68,7 +68,7 @@ enhance the proto meta-model. Despite our efforts, the complexity of the SEDS do
 all constraints, restrictions, and details of the specification. Instantiating the meta-model was impossible. At least,
 it helped us greatly in understanding the domain.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_1.png"
          alt="Proto meta-model improvement">
     <figcaption>Proto meta-model improvement, the complexity does not allow a view of the whole meta-model even on the smallest zoom ratio (5%)</figcaption>
@@ -100,7 +100,7 @@ It describes all the main components of the EDS. The root component Datasheet co
 - Device - wraps information and meta-data of the concrete device
 - Package - wraps three major parts defining the functionality, interface, and used data types of the device
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_2.png"
          alt="Datasheets schema">
     <figcaption>High-level schema of the metamodel</figcaption>
@@ -113,9 +113,9 @@ examples showcase abstract syntax which will be used in the example in the next 
 
 #### Example 1
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_6.png"
-         alt="Example 1">
+         alt="Example 1" style="max-height: 250px;">
     <figcaption>Example #1 - IntegerDataType</figcaption>
 </figure>
 
@@ -133,9 +133,9 @@ The IntegerDataType concept is further restricted by specifying exactly one valu
 
 #### Example 2
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_5.png"
-         alt="Example 2">
+         alt="Example 2" style="max-height: 250px;">
     <figcaption>Example #2 - DataEncodingType and ByteOrderType</figcaption>
 </figure>
 
@@ -150,9 +150,9 @@ ByteOrderType is a **scalar** type that defines the enumeration of two specific 
 
 #### Example 3
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_3.png"
-         alt="Example 3">
+         alt="Example 3" style="max-height: 250px;">
     <figcaption>Example #3 - IntegerDataEncodingType</figcaption>
 </figure>
 
@@ -182,9 +182,9 @@ The Calculator specification required these components:
 ### Description syntax example
 In this section, we will show a few examples covering important elements of the Calculator we defined.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_4.png"
-         alt="Example 4">
+         alt="Example 4" style="max-height: 250px;">
     <figcaption>Example #4 - CalculatorDataSheet description</figcaption>
 </figure>
 
@@ -200,18 +200,18 @@ Calculator specification. The main elements of the Package are as follows:
 - CalculatorInterfaceSet - contains a set of interfaces - We needed only one, defining commands as user input for the Calculator.
 - ComponentSet - contains a set of components providing the functionality of the Calculator.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_7.png"
-         alt="Example 5">
+         alt="Example 5" style="max-height: 300px;">
     <figcaption>Example #5 - Integer data type description</figcaption>
 </figure>
 
 In this example, it can be seen the definition of Integer data type and its related elements.
 To be fully described, it needs a range and encoding which abstract syntax could be seen in the previous section.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_8.png"
-         alt="Example 6">
+         alt="Example 6" style="max-height: 230px;">
     <figcaption>Example #6 - Implementation of Calculator component description</figcaption>
 </figure>
 
@@ -220,18 +220,18 @@ The implementation of the Calculator component consists of three components:
 - CalculatorActivitySet - Sets of activities, which can be interpreted as an output of the calculator, we needed only one.
 - CalculatorStateMachineSet - Set of state machines that the device needs, we needed only one.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_9.png"
-         alt="Example 7">
+         alt="Example 7" style="max-height: 200px;">
     <figcaption>Example #7 - Activity</figcaption>
 </figure>
 
 To create an activity, we instantiated the ActivityType to the AddAndNotifyActivity, also this activity
 has two arguments, that notify the user when two numbers are added.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_10.png"
-         alt="Example 8">
+         alt="Example 8" style="max-height: 200px;">
     <figcaption>Example #8 - StateMachine</figcaption>
 </figure>
 
@@ -239,18 +239,18 @@ Then we also created a state machine that had two states -- Entry and Idle state
 is initialized. The idle state represents when the calculator is ready to take input. The state machines also have assigned two
 transitions.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_11.png"
-         alt="Example 9">
+         alt="Example 9" style="max-height: 200px;">
     <figcaption>Example #9 - Transition</figcaption>
 </figure>
 
 The Example #9 is the instance of the Add transition. This transition changes state from the IdleState to the IdleState.
 This transition is evoked when the calculator is commanded to add two integers. With the evocation, the do will be executed.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_12.png"
-         alt="Example 10">
+         alt="Example 10" style="max-height: 200px;">
     <figcaption>Example #10 - Activity instance</figcaption>
 </figure>
 
@@ -266,15 +266,15 @@ a simplified model that contains only important parts.
 In Example #11 and Example #12 we can see a higher-level view of the system as a whole and
 the relations between all elements of the description of the electronic datasheet.
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_13.png"
-         alt="Example 11">
+         alt="Example 11" style="max-height: 300px;">
     <figcaption>Example #11 - Instance model - first part</figcaption>
 </figure>
 
-<figure>
+<figure style="text-align: center;">
     <img src="resources/img_14.png"
-         alt="Example 12">
+         alt="Example 12" style="max-height: 300px;">
     <figcaption>Example #12 - Instance model - second part</figcaption>
 </figure>
 
